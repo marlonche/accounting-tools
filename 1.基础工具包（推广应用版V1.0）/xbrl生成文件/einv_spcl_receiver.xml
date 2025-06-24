@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:einv="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/einv" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="einv_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">91440101MA5CLQ731R</identifier>
+    </entity>
+    <period>
+      <instant>2022-06-30</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <einv:InvoiceNumber contextRef="c1">22442000000921291350</einv:InvoiceNumber>
+  <einv:ContractNumber contextRef="c1">R9988888</einv:ContractNumber>
+  <einv:MatchingStateBetweenBusinessDocumentsAndVatEinvoice contextRef="c1">已匹配</einv:MatchingStateBetweenBusinessDocumentsAndVatEinvoice>
+  <einv:WhetherEinvoiceIsRedEinvoice contextRef="c1">false</einv:WhetherEinvoiceIsRedEinvoice>
+  <einv:WhetherEinvoiceHasBeenBooked contextRef="c1">true</einv:WhetherEinvoiceHasBeenBooked>
+  <einv:WhetherEinvoiceHasBeenChecked contextRef="c1">true</einv:WhetherEinvoiceHasBeenChecked>
+  <einv:WhetherEinvoiceHasBeenPaid contextRef="c1">true</einv:WhetherEinvoiceHasBeenPaid>
+  <einv:NumberOfBankElectronicReceipt contextRef="c1">6FE0-4F2C-88AA</einv:NumberOfBankElectronicReceipt>
+  <einv:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">91440101MA5CLQ731R</einv:UnifiedSocialCreditCodeOfAccountingEntity>
+  <einv:NameOfAccountingEntity contextRef="c1">广州市兆丰商贸有限公司</einv:NameOfAccountingEntity>
+  <einv:InformationOfAccountingDocumentsTuple>
+    <einv:NumberOfAccountingDocuments contextRef="c1">R0009</einv:NumberOfAccountingDocuments>
+    <einv:PostingDate contextRef="c1">2022-06-30</einv:PostingDate>
+    <einv:AccountingPeriod contextRef="c1">2022-06</einv:AccountingPeriod>
+    <einv:InformationOfDebitAndCreditEntryTuple>
+      <einv:DebitOrCredit contextRef="c1">借方</einv:DebitOrCredit>
+      <einv:NameOfGeneralLedgerSubject contextRef="c1">原材料</einv:NameOfGeneralLedgerSubject>
+      <einv:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">9000.00</einv:RecordedAmount>
+    </einv:InformationOfDebitAndCreditEntryTuple>
+    <einv:InformationOfDebitAndCreditEntryTuple>
+      <einv:DebitOrCredit contextRef="c1">借方</einv:DebitOrCredit>
+      <einv:NameOfGeneralLedgerSubject contextRef="c1">应交税费</einv:NameOfGeneralLedgerSubject>
+      <einv:NameOfSubsidiaryLedgerSubject contextRef="c1">应交税费-进项税额</einv:NameOfSubsidiaryLedgerSubject>
+      <einv:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">1170.00</einv:RecordedAmount>
+    </einv:InformationOfDebitAndCreditEntryTuple>
+    <einv:InformationOfDebitAndCreditEntryTuple>
+      <einv:DebitOrCredit contextRef="c1">贷方</einv:DebitOrCredit>
+      <einv:NameOfGeneralLedgerSubject contextRef="c1">银行存款</einv:NameOfGeneralLedgerSubject>
+      <einv:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">10170.00</einv:RecordedAmount>
+    </einv:InformationOfDebitAndCreditEntryTuple>
+  </einv:InformationOfAccountingDocumentsTuple>
+  <einv:WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted contextRef="c1">false</einv:WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted>
+  <einv:BeginningOfExpenditurePeriodUnderAccrualBasis contextRef="c1">2022-06</einv:BeginningOfExpenditurePeriodUnderAccrualBasis>
+  <einv:WhetherEinvoiceUsageHasBeenConfirmed contextRef="c1">true</einv:WhetherEinvoiceUsageHasBeenConfirmed>
+  <einv:UsageConfirmation contextRef="c1">xxxxx</einv:UsageConfirmation>
+  <einv:WhetherInputVatHasBeenTransferredOut contextRef="c1">true</einv:WhetherInputVatHasBeenTransferredOut>
+  <einv:AmountOfTransferredOutInputVat contextRef="c1" unitRef="u1" decimals="2">1170.00</einv:AmountOfTransferredOutInputVat>
+  <einv:PeriodOfUsageConfirmation contextRef="c1">2022-06</einv:PeriodOfUsageConfirmation>
+  <einv:BeginningOfPreTaxDeductionYearOfIncomeTax contextRef="c1">2022</einv:BeginningOfPreTaxDeductionYearOfIncomeTax>
+  <einv:EndOfPreTaxDeductionYearOfIncomeTax contextRef="c1">2022</einv:EndOfPreTaxDeductionYearOfIncomeTax>
+  <einv:EndOfExpenditurePeriodUnderAccrualBasis contextRef="c1">2022-12</einv:EndOfExpenditurePeriodUnderAccrualBasis>
+  <einv:SellerName contextRef="c1">中山市奕博照明有限公司</einv:SellerName>
+  <einv:SellerIdNum contextRef="c1">91442000MA52PFXD1J</einv:SellerIdNum>
+  <einv:TotalAmWithoutTax contextRef="c1" unitRef="u1" decimals="2">9000.00</einv:TotalAmWithoutTax>
+  <einv:RequestTime contextRef="c1">2022-06-30</einv:RequestTime>
+  <einv:TotalTaxAm contextRef="c1" unitRef="u1" decimals="2">1170.00</einv:TotalTaxAm>
+  <einv:TotalTax-includedAmount contextRef="c1" unitRef="u1" decimals="2">10170.00</einv:TotalTax-includedAmount>
+</xbrl>

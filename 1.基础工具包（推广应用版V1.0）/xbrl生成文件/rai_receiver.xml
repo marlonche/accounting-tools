@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:rai="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/rai" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="rai_receiver_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">91110000073123456</identifier>
+    </entity>
+    <period>
+      <instant>2021-12-12</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <rai:DateOfIssue contextRef="c1">2021-11-12</rai:DateOfIssue>
+  <rai:TotalAmountExcludingTax contextRef="c1" unitRef="u1" decimals="2">393.58</rai:TotalAmountExcludingTax>
+  <rai:TaxRate contextRef="c1" unitRef="u1" decimals="2">0.09</rai:TaxRate>
+  <rai:TaxAmount contextRef="c1" unitRef="u1" decimals="2">35.42</rai:TaxAmount>
+  <rai:WhetherInvoiceIsRedInvoice contextRef="c1">false</rai:WhetherInvoiceIsRedInvoice>
+  <rai:WhetherInvoiceHasBeenBooked contextRef="c1">true</rai:WhetherInvoiceHasBeenBooked>
+  <rai:WhetherInvoiceHasBeenDeducted contextRef="c1">true</rai:WhetherInvoiceHasBeenDeducted>
+  <rai:TaxPeriodOfInvoiceDeduction contextRef="c1">2021-12</rai:TaxPeriodOfInvoiceDeduction>
+  <rai:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">91110000073123456</rai:UnifiedSocialCreditCodeOfAccountingEntity>
+  <rai:NameOfAccountingEntity contextRef="c1">ABC</rai:NameOfAccountingEntity>
+  <rai:InformationOfAccountingDocumentsTuple>
+    <rai:NumberOfAccountingDocuments contextRef="c1">12345678</rai:NumberOfAccountingDocuments>
+    <rai:PostingDate contextRef="c1">2021-12-12</rai:PostingDate>
+    <rai:AccountingPeriod contextRef="c1">2021-12</rai:AccountingPeriod>
+    <rai:SummaryOfAccountingDocuments contextRef="c1">火车票报销</rai:SummaryOfAccountingDocuments>
+    <rai:InformationOfDebitAndCreditEntryTuple>
+      <rai:DebitOrCredit contextRef="c1">借</rai:DebitOrCredit>
+      <rai:NameOfGeneralLedgerSubject contextRef="c1">管理费用</rai:NameOfGeneralLedgerSubject>
+      <rai:NameOfSubsidiaryLedgerSubject contextRef="c1">差旅费</rai:NameOfSubsidiaryLedgerSubject>
+      <rai:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">393.58</rai:RecordedAmount>
+    </rai:InformationOfDebitAndCreditEntryTuple>
+    <rai:InformationOfDebitAndCreditEntryTuple>
+      <rai:DebitOrCredit contextRef="c1">借</rai:DebitOrCredit>
+      <rai:NameOfGeneralLedgerSubject contextRef="c1">应交税费</rai:NameOfGeneralLedgerSubject>
+      <rai:NameOfSubsidiaryLedgerSubject contextRef="c1">进项税额</rai:NameOfSubsidiaryLedgerSubject>
+      <rai:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">35.42</rai:RecordedAmount>
+    </rai:InformationOfDebitAndCreditEntryTuple>
+    <rai:InformationOfDebitAndCreditEntryTuple>
+      <rai:DebitOrCredit contextRef="c1">贷</rai:DebitOrCredit>
+      <rai:NameOfGeneralLedgerSubject contextRef="c1">应付账款</rai:NameOfGeneralLedgerSubject>
+      <rai:NameOfSubsidiaryLedgerSubject contextRef="c1">其他</rai:NameOfSubsidiaryLedgerSubject>
+      <rai:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">429.00</rai:RecordedAmount>
+    </rai:InformationOfDebitAndCreditEntryTuple>
+  </rai:InformationOfAccountingDocumentsTuple>
+</xbrl>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ntrev="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/ntrev" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="ntrev_issuer_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">0000003</identifier>
+    </entity>
+    <period>
+      <instant>2021-08-24</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <ntrev:HEADER>
+    <ntrev:EINVOICE_TAG contextRef="c1">CZ-EI-00</ntrev:EINVOICE_TAG>
+    <ntrev:EINVOICE_ID contextRef="c1">2800070000-12103000</ntrev:EINVOICE_ID>
+    <ntrev:VERSION contextRef="c1">2.0.0.1</ntrev:VERSION>
+  </ntrev:HEADER>
+  <ntrev:EINVOICE_DATA>
+    <ntrev:MAIN>
+      <ntrev:EINVOICE_NAME contextRef="c1">中央非税收入缴款书_电子票</ntrev:EINVOICE_NAME>
+      <ntrev:EINVOICE_CODE contextRef="c1">00030121</ntrev:EINVOICE_CODE>
+      <ntrev:NON_TAX_PAY_NO contextRef="c1">0000700082</ntrev:NON_TAX_PAY_NO>
+      <ntrev:NON_TAX_PAY_CODE contextRef="c1">0000002100042048</ntrev:NON_TAX_PAY_CODE>
+      <ntrev:RANDOM_NUMBER contextRef="c1">90007d</ntrev:RANDOM_NUMBER>
+      <ntrev:EINVOICE_SPECIMEN_CODE contextRef="c1">0003012113</ntrev:EINVOICE_SPECIMEN_CODE>
+      <ntrev:SUPERVISOR_AREA_CODE contextRef="c1">000000</ntrev:SUPERVISOR_AREA_CODE>
+      <ntrev:BILL_DATE contextRef="c1">2021-08-24</ntrev:BILL_DATE>
+      <ntrev:BILL_TIME contextRef="c1">18:47:37</ntrev:BILL_TIME>
+      <ntrev:PAID_AMT contextRef="c1" unitRef="u1" decimals="2">200.00</ntrev:PAID_AMT>
+      <ntrev:EXEC_AGENCY_PARTY>
+        <ntrev:EXEC_AGENCY_CODE contextRef="c1">0000003</ntrev:EXEC_AGENCY_CODE>
+        <ntrev:EXEC_AGENCY_NAME contextRef="c1">非试点单位</ntrev:EXEC_AGENCY_NAME>
+        <ntrev:REC_ACCT_TYPE contextRef="c1">2</ntrev:REC_ACCT_TYPE>
+        <ntrev:PAYEE_ACCT_NAME contextRef="c1">测试单位</ntrev:PAYEE_ACCT_NAME>
+        <ntrev:PAYEE_ACCT_NO contextRef="c1">7867867867</ntrev:PAYEE_ACCT_NO>
+        <ntrev:PAYEE_ACCT_BANK_NAME contextRef="c1">中信银行股份有限公司北京交大支行</ntrev:PAYEE_ACCT_BANK_NAME>
+      </ntrev:EXEC_AGENCY_PARTY>
+      <ntrev:PAYER_PARTY>
+        <ntrev:PAYER_PARTY_TYPE_CODE contextRef="c1">1</ntrev:PAYER_PARTY_TYPE_CODE>
+        <ntrev:PAYER_PARTY_CODE contextRef="c1"></ntrev:PAYER_PARTY_CODE>
+        <ntrev:PAYER_NAME contextRef="c1">test查看</ntrev:PAYER_NAME>
+        <ntrev:PAYER_ACC_NO contextRef="c1"></ntrev:PAYER_ACC_NO>
+        <ntrev:PAYER_OPEN_BANK contextRef="c1"></ntrev:PAYER_OPEN_BANK>
+      </ntrev:PAYER_PARTY>
+      <ntrev:PAY_IN_MET_CODE contextRef="c1">1</ntrev:PAY_IN_MET_CODE>
+      <ntrev:BIZ_CODE contextRef="c1">afd578c8c2264b6bb05c19acba81fddd</ntrev:BIZ_CODE>
+      <ntrev:REMARK contextRef="c1"></ntrev:REMARK>
+      <ntrev:AUTHOR contextRef="c1">0000003</ntrev:AUTHOR>
+      <ntrev:CHECKER contextRef="c1">0000003</ntrev:CHECKER>
+      <ntrev:SUPERVISOR_REMARK contextRef="c1"></ntrev:SUPERVISOR_REMARK>
+      <ntrev:MAIN_EXT>
+        <ntrev:RELATED_INVOICE_CODE contextRef="c1"></ntrev:RELATED_INVOICE_CODE>
+        <ntrev:RELATED_INVOICE_NUMBER contextRef="c1"></ntrev:RELATED_INVOICE_NUMBER>
+      </ntrev:MAIN_EXT>
+      <ntrev:INVOICING_PARTY_SEAL>
+        <ntrev:SEAL_ID contextRef="c1">c95ceecff8da4f9985fb031ae37904ad</ntrev:SEAL_ID>
+        <ntrev:SEAL_NAME contextRef="c1">非试点单位</ntrev:SEAL_NAME>
+        <ntrev:SEAL_HASH contextRef="c1">5890559faaec52ea622ab9b8a6456592aed55377959617a38d85f948bdbbac9e</ntrev:SEAL_HASH>
+      </ntrev:INVOICING_PARTY_SEAL>
+      <ntrev:SUPERVISOR_PARTY_SEAL>
+        <ntrev:SEAL_ID contextRef="c1">c95ceecff8da4f9985fb031ae37904ad</ntrev:SEAL_ID>
+        <ntrev:SEAL_NAME contextRef="c1">非试点单位</ntrev:SEAL_NAME>
+        <ntrev:SEAL_HASH contextRef="c1">5890559faaec52ea622ab9b8a6456592aed55377959617a38d85f948bdbbac9e</ntrev:SEAL_HASH>
+      </ntrev:SUPERVISOR_PARTY_SEAL>
+    </ntrev:MAIN>
+    <ntrev:DETAILS>
+      <ntrev:ITEM>
+        <ntrev:NON_TAX_CODE contextRef="c1">011002</ntrev:NON_TAX_CODE>
+        <ntrev:NON_TAX_PROJ_CODE contextRef="c1">000010000056</ntrev:NON_TAX_PROJ_CODE>
+        <ntrev:NON_TAX_NAME contextRef="c1">电信网码号资源占用费</ntrev:NON_TAX_NAME>
+        <ntrev:PAY_NUMBER contextRef="c1" unitRef="u1" decimals="4">1.0000</ntrev:PAY_NUMBER>
+        <ntrev:CHARGE_STAND_UNIT contextRef="c1">元</ntrev:CHARGE_STAND_UNIT>
+        <ntrev:CHARGE_STAND_NAME contextRef="c1">电信网码号资源占用费</ntrev:CHARGE_STAND_NAME>
+        <ntrev:CHARGE_STAND contextRef="c1" unitRef="u1" decimals="4">100.0000</ntrev:CHARGE_STAND>
+        <ntrev:PAID_DETAIL_AMT contextRef="c1" unitRef="u1" decimals="2">100.00</ntrev:PAID_DETAIL_AMT>
+        <ntrev:ITEM_REMARK contextRef="c1"></ntrev:ITEM_REMARK>
+      </ntrev:ITEM>
+      <ntrev:ITEM>
+        <ntrev:NON_TAX_CODE contextRef="c1">011002</ntrev:NON_TAX_CODE>
+        <ntrev:NON_TAX_PROJ_CODE contextRef="c1">000010000056</ntrev:NON_TAX_PROJ_CODE>
+        <ntrev:NON_TAX_NAME contextRef="c1">电信网码号资源占用费</ntrev:NON_TAX_NAME>
+        <ntrev:PAY_NUMBER contextRef="c1" unitRef="u1" decimals="4">1.0000</ntrev:PAY_NUMBER>
+        <ntrev:CHARGE_STAND_UNIT contextRef="c1">元</ntrev:CHARGE_STAND_UNIT>
+        <ntrev:CHARGE_STAND_NAME contextRef="c1">电信网码号资源占用费</ntrev:CHARGE_STAND_NAME>
+        <ntrev:CHARGE_STAND contextRef="c1" unitRef="u1" decimals="4">100.0000</ntrev:CHARGE_STAND>
+        <ntrev:PAID_DETAIL_AMT contextRef="c1" unitRef="u1" decimals="2">100.00</ntrev:PAID_DETAIL_AMT>
+        <ntrev:ITEM_REMARK contextRef="c1"></ntrev:ITEM_REMARK>
+      </ntrev:ITEM>
+    </ntrev:DETAILS>
+  </ntrev:EINVOICE_DATA>
+  <ntrev:EINVOICE_SIGNATURE>
+    <ntrev:INVOICING_PARTY_SIGNATURE>
+      <ntrev:SIGNED_INFO>
+        <ntrev:REFERENCE contextRef="c1">/EINVOICE/HEADER|/EINVOICE/EINVOICE_DATA</ntrev:REFERENCE>
+        <ntrev:SIGNATURE_ALGORITHM contextRef="c1">SHA256withRSAEncryption</ntrev:SIGNATURE_ALGORITHM>
+        <ntrev:SIGNATURE_FORMAT contextRef="c1">DETACH</ntrev:SIGNATURE_FORMAT>
+      </ntrev:SIGNED_INFO>
+      <ntrev:SIGNATURE_TIME contextRef="c1">20210825102603+0800</ntrev:SIGNATURE_TIME>
+      <ntrev:SIGNATURE_VALUE contextRef="c1">MIID0wYJKoZIhvcNAQcCoIIDxDCCA8ACAQExCTAHBgUrDgMCGjALBgkqhkiG9w0BBwGgggJfMIICWzCCAcSgAwIBAgIEWZuoxzANBgkqhkiG9w0BAQUFADByMQ8wDQYDVQQGDAbkuK3lm70xDzANBgNVBAgMBuemj+W7ujEPMA0GA1UEBwwG56aP5beeMRUwEwYDVQQKDAzljZrmgJ3ova/ku7YxFTATBgNVBAsMDOWNmuaAnei9r+S7tjEPMA0GA1UEAwwG5byg5pyIMB4XDTE3MDgyMjAzNDUxMVoXDTE5MDgxMjAzNDUxMVowcjEPMA0GA1UEBgwG5Lit5Zu9MQ8wDQYDVQQIDAbnpo/lu7oxDzANBgNVBAcMBuemj+W3njEVMBMGA1UECgwM5Y2a5oCd6L2v5Lu2MRUwEwYDVQQLDAzljZrmgJ3ova/ku7YxDzANBgNVBAMMBuW8oOaciDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAtOvx6Jt+0/nfUIrSxJU0Na2XjPK0TDENnAy5W612O2bBJxh0VVtZs+Tm64OTe737HPVu1fBkanj8j85j0eOGpg+weOnmYZt4cajDe+nZfa05Eio+PD71PfXrSPalxn82pFwZzaqNEiRqnO9Ics0lJiz0U1qj/S4ReFI4ln+a9DcCAwEAATANBgkqhkiG9w0BAQUFAAOBgQCGkA3gToLNjWSakh/wcHI0+Pn52OXRaIFAmg6ZuICscCjX4PGE4fWoHvtIXo8THtSHP5yqn/P6N3CDh54G1BuVdDmTpddcKSezqLHwtblHYTWbreJ6y+xUwyKV1GtdF+MWfbKvBwFmNy31lt7ylAxz7OKGOJXL9nYVK/YOGFFSLzGCAT4wggE6AgEBMHowcjEPMA0GA1UEBgwG5Lit5Zu9MQ8wDQYDVQQIDAbnpo/lu7oxDzANBgNVBAcMBuemj+W3njEVMBMGA1UECgwM5Y2a5oCd6L2v5Lu2MRUwEwYDVQQLDAzljZrmgJ3ova/ku7YxDzANBgNVBAMMBuW8oOaciAIEWZuoxzAJBgUrDgMCGgUAMA0GCSqGSIb3DQEBAQUABIGArLL+9630CF/MI9dWG+JFcnjT1w95V0e+9DO+/FZFFuf3W1GPRloOjocdIfoH8XpX+Z6fUOwjsVxlY4hdvyE5k2sFPZWUAJ+VYYzofgDFitMrkA8EPMAZAQL3AEzc6tpVXF8KPIVhk+T3jSx5JFeag6nICEG9D2w1m19COiAVGYShHDAaBgAxFgQULHKc/rGFL4TqU3A1GQEot+GNpnM=</ntrev:SIGNATURE_VALUE>
+      <ntrev:KEY_INFO>
+        <ntrev:SERIAL_NUMBER contextRef="c1">599BA8C7</ntrev:SERIAL_NUMBER>
+        <ntrev:X509ISSUER_NAME contextRef="c1">CN=张月, OU=博思软件, O=博思软件, L=福州, ST=福建, C=中国</ntrev:X509ISSUER_NAME>
+      </ntrev:KEY_INFO>
+    </ntrev:INVOICING_PARTY_SIGNATURE>
+    <ntrev:SUPERVISOR_PARTY_SIGNATURE>
+      <ntrev:SIGNED_INFO>
+        <ntrev:REFERENCE contextRef="c1">hash(/EINVOICE/HEADER|/EINVOICE/EINVOICE_DATA)|/EINVOICE/EINVOICE_SIGNATURE/SIGNATURE[@ID='InvoicingParty']</ntrev:REFERENCE>
+        <ntrev:SIGNATURE_ALGORITHM contextRef="c1">SHA256withRSAEncryption</ntrev:SIGNATURE_ALGORITHM>
+        <ntrev:SIGNATURE_FORMAT contextRef="c1">DETACH</ntrev:SIGNATURE_FORMAT>
+      </ntrev:SIGNED_INFO>
+      <ntrev:SIGNATURE_TIME contextRef="c1">20210825102604+0800</ntrev:SIGNATURE_TIME>
+      <ntrev:SIGNATURE_VALUE contextRef="c1">MIAGCSqGSIb3DQEHAqCAMIACAQExFjAJBgUrDgMCGgUAMAkGBSsOAwIaBQAwgAYJKoZIhvcNAQcBAACggDCCAegwggFRoAMCAQICAw9CQjANBgkqhkiG9w0BAQUFADAQMQ4wDAYDVQQKDAVNT0Y7QzAeFw0xODEwMDgwNTE3NThaFw0yODEwMDUwNTE3NThaMBAxDjAMBgNVBAoMBU1PRjtDMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvxJUxyduYzcRv8CxrIjOxNn+FOFEISXrxxR07mDH014hg10lqCQad77SROSDmB3L5uaUV0I16H+8Jlj8MVnjjAtZDHAG80sQ5bIKqI5IzyUb8j66fcTZ+aika88NnMpiCX2iXivlplMW54TUXq5YE+dBueSJ0eY1CxmM59Df7SQIDAQABo1AwTjAdBgNVHQ4EFgQUuOKxed+/ABZLIeB7M2mcsNrx3oMwHwYDVR0jBBgwFoAU55bTpqfRdwL9k/IFA2gXfSy0scgwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQBBwp8zH+V2AhhK7IrubV0/HTRNVDrRWqR8tAKdp8EvFWZ8OS8tJNubKfTrHwlm584dp+/hrGpaDovgSQWIFfX7dO04LNJnhddfsypqeTCaUP0/R1JnfOz62OWJgsMbqk9oaT29IHBDUNCNVVsT55G5Sja6qjOEP3x2kAv05jebFQAAMYICkDCCAUQCAQEwFzAQMQ4wDAYDVQQKDAVNT0Y7QwIDD0JCMAkGBSsOAwIaBQCggYgwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjEwODI1MDIyNDQyWjAjBgkqhkiG9w0BCQQxFgQUmdh0IBgD87Ykno7Eg85koRs2ZI8wKQYJKoZIhvcNAQk0MRwwGjAJBgUrDgMCGgUAoQ0GCSqGSIb3DQEBAQUAMA0GCSqGSIb3DQEBAQUABIGAFDxeSB7+3gd0R5K7jv2c8Erz+182VjYahEvBs+InYk2rgN8uezE6Iu3tg7YhUuGeC/sGqeOcW4kdbLANcmuM8oQ/feuCIaNTIA2g19brLHd1ytOiOJ4zsZhGz+ho6Lk6TbbdTk+mC6Z5wF3RJCHX7HLse0QYKymRxwRnfoP4nGgwggFEAgEBMBcwEDEOMAwGA1UECgwFTU9GO0MCAw9CQjAJBgUrDgMCGgUAoIGIMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIxMDgyNTAyMjQ0M1owIwYJKoZIhvcNAQkEMRYEFJnYdCAYA/O2JJ6OxIPOZKEbNmSPMCkGCSqGSIb3DQEJNDEcMBowCQYFKw4DAhoFAKENBgkqhkiG9w0BAQEFADANBgkqhkiG9w0BAQEFAASBgGgiJXs8J0yDPSB1kZ2mfRrEA9k94noHkm5QYB6zqVyiFbRgQD8Yk7sIdD8flmoVHAcTrmGTaJgX5nSVz64N6LOvjmQe8vIFC0HlzgJIIcCPXYpk+aiKDyyGymCzQmCjxdwk+Bmu7wILuaA0FeBuP7FGeJIKWqRRf28jwr/hdpwoAAAAAAAA</ntrev:SIGNATURE_VALUE>
+      <ntrev:KEY_INFO>
+        <ntrev:SERIAL_NUMBER contextRef="c1">1000002</ntrev:SERIAL_NUMBER>
+        <ntrev:X509ISSUER_NAME contextRef="c1">O="MOF;C"</ntrev:X509ISSUER_NAME>
+      </ntrev:KEY_INFO>
+    </ntrev:SUPERVISOR_PARTY_SIGNATURE>
+  </ntrev:EINVOICE_SIGNATURE>
+</xbrl>

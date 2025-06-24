@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:bker="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/bker" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="bker_receiver_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">916200007000123456</identifier>
+    </entity>
+    <period>
+      <instant>2019-12-31</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <bker:IdentifyingCode contextRef="c1">C10303110004552019030390296600243000000000019444</bker:IdentifyingCode>
+  <bker:Currency contextRef="c1">CNY</bker:Currency>
+  <bker:TransactionAmountInFigures contextRef="c1" unitRef="u1" decimals="2">1000000.00</bker:TransactionAmountInFigures>
+  <bker:ContractNumber contextRef="c1">HT123456</bker:ContractNumber>
+  <bker:TypeOfInvoice contextRef="c1">增值税电子专用发票</bker:TypeOfInvoice>
+  <bker:DateOfIssue contextRef="c1">2019-12-14</bker:DateOfIssue>
+  <bker:AmountPayableAndReceivable contextRef="c1" unitRef="u1" decimals="2">1000000.00</bker:AmountPayableAndReceivable>
+  <bker:WhetherInvoiceHasBeenClaimed contextRef="c1">true</bker:WhetherInvoiceHasBeenClaimed>
+  <bker:WhetherReceiptHasBeenBooked contextRef="c1">true</bker:WhetherReceiptHasBeenBooked>
+  <bker:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">916200007000123456</bker:UnifiedSocialCreditCodeOfAccountingEntity>
+  <bker:NameOfAccountingEntity contextRef="c1">XYZ</bker:NameOfAccountingEntity>
+  <bker:InformationOfAccountingDocumentsTuple>
+    <bker:NumberOfAccountingDocuments contextRef="c1">123456</bker:NumberOfAccountingDocuments>
+    <bker:PostingDate contextRef="c1">2019-12-31</bker:PostingDate>
+    <bker:AccountingPeriod contextRef="c1">2019-12</bker:AccountingPeriod>
+    <bker:SummaryOfAccountingDocuments contextRef="c1">支付供应商分包款</bker:SummaryOfAccountingDocuments>
+    <bker:InformationOfDebitAndCreditEntryTuple>
+      <bker:DebitOrCredit contextRef="c1">借方</bker:DebitOrCredit>
+      <bker:NameOfGeneralLedgerSubject contextRef="c1">应付账款</bker:NameOfGeneralLedgerSubject>
+      <bker:NameOfSubsidiaryLedgerSubject contextRef="c1">工程款</bker:NameOfSubsidiaryLedgerSubject>
+      <bker:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">800000.00</bker:RecordedAmount>
+    </bker:InformationOfDebitAndCreditEntryTuple>
+    <bker:InformationOfDebitAndCreditEntryTuple>
+      <bker:DebitOrCredit contextRef="c1">借方</bker:DebitOrCredit>
+      <bker:NameOfGeneralLedgerSubject contextRef="c1">应付账款</bker:NameOfGeneralLedgerSubject>
+      <bker:NameOfSubsidiaryLedgerSubject contextRef="c1">其他</bker:NameOfSubsidiaryLedgerSubject>
+      <bker:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">200000.00</bker:RecordedAmount>
+    </bker:InformationOfDebitAndCreditEntryTuple>
+    <bker:InformationOfDebitAndCreditEntryTuple>
+      <bker:DebitOrCredit contextRef="c1">贷方</bker:DebitOrCredit>
+      <bker:NameOfGeneralLedgerSubject contextRef="c1">银行存款</bker:NameOfGeneralLedgerSubject>
+      <bker:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">1000000.00</bker:RecordedAmount>
+    </bker:InformationOfDebitAndCreditEntryTuple>
+  </bker:InformationOfAccountingDocumentsTuple>
+  <bker:WhetherReceiptHasBeenReconciled contextRef="c1">true</bker:WhetherReceiptHasBeenReconciled>
+  <bker:WhetherReceiptHasBeenTransferredToBank contextRef="c1">false</bker:WhetherReceiptHasBeenTransferredToBank>
+  <bker:UniqueCodeOfInvoice contextRef="c1">06200210011300341001</bker:UniqueCodeOfInvoice>
+</xbrl>

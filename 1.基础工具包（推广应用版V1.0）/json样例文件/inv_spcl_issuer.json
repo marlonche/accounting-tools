@@ -1,0 +1,38 @@
+{
+    "TypeOfInvoice": "增值税电子专用发票",
+    "UniqueCodeOfInvoice": "06200210011300341001",
+    "LocationOfInvoice": "北京",
+    "CodeOfInvoice": "062002100113",
+    "NumberOfInvoice": "00341001",
+    "DateOfIssue": "2021-01-21",
+    "IdentifyingCode": "177458479993998670745",
+    "NumberOfInvoiceMachine": "917000646623",
+    "NameOfPurchaser": "ABC公司",
+    "AddressPhoneNumberOfPurchaser": "北京市朝阳区xxxxx路X号",
+    "DepositBankAndAccountNumberOfPurchaser": "工商银行北京xxxx支行",
+    "SecurityCode": "5/82>775/61-31--06<7816*/*71*5>7>-+29+6*9/<06147>851479226492*<689301631-*06<7811**0>2<5>73-939<2/9/<83-2</*",
+    "TotalAmountExcludingTax": "97029.70",
+    "TotalTaxAmount": "970.30",
+    "TaxIncludedAmountInWords": "玖万捌仟元整",
+    "TaxIncludedAmountInFigures": "98000.00",
+    "NameOfSeller": "甘肃****有限公司",
+    "AddressPhoneNumberOfSeller": "甘肃省XXXXXX",
+    "DepositBankAndAccountNumberOfSeller": "华夏银行北京xxxx支行",
+    "Payee": "管理员",
+    "Reviewer": "管理员",
+    "Issuer": "管理员",
+    "InformationOfTaxableGoodsOrServicesDetailItemsTuple": [
+        {
+            "NatureOfInvoiceLine": "普通行",
+            "NameOfTaxableGoodsOrServices": "*建筑服务*工程款",
+            "UnitPriceOfGoodsOrServices": "97029.7",
+            "AmountExcludingTax": "97029.70",
+            "TaxRate": "1%",
+            "TaxAmount": "970.30"
+        }
+    ],
+    "TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfPurchaser": "91110000073XXXXXX",
+    "TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller": "919600007000XXXXXX",
+    "BeginningOfIncomePeriodUnderAccrualBasis": "2021-01",
+    "EndOfIncomePeriodUnderAccrualBasis": "2021-01"
+}

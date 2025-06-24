@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:atr="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/atr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="atr_issuer_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">中国南方航空股份有限公司</identifier>
+    </entity>
+    <period>
+      <instant>2021-07-28</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <atr:PassengerName contextRef="c1">王某某</atr:PassengerName>
+  <atr:ValidIdNumber contextRef="c1">384932********1234</atr:ValidIdNumber>
+  <atr:Endorsement contextRef="c1">不得签转</atr:Endorsement>
+  <atr:NumberOfGpOrder contextRef="c1">GP112045678767</atr:NumberOfGpOrder>
+  <atr:DetailInformationOfAirTicketTuple>
+    <atr:DepartureStation contextRef="c1">合肥 HFE</atr:DepartureStation>
+    <atr:DestinationStation contextRef="c1">广州 CAN</atr:DestinationStation>
+    <atr:FlightSegment contextRef="c1">1</atr:FlightSegment>
+    <atr:Carrier contextRef="c1">南航</atr:Carrier>
+    <atr:Flight contextRef="c1">CZ8866</atr:Flight>
+    <atr:Class contextRef="c1">V</atr:Class>
+    <atr:CarrierDate contextRef="c1">2021-07-27</atr:CarrierDate>
+    <atr:DepartureTime contextRef="c1">18:30</atr:DepartureTime>
+    <atr:FareBasis contextRef="c1">Y50</atr:FareBasis>
+    <atr:EffectiveDate contextRef="c1" xsi:nil="true"/>
+    <atr:ExpirationDate contextRef="c1" xsi:nil="true"/>
+    <atr:FreeBaggageAllowance contextRef="c1">20K</atr:FreeBaggageAllowance>
+  </atr:DetailInformationOfAirTicketTuple>
+  <atr:DetailInformationOfAirTicketTuple>
+    <atr:DepartureStation contextRef="c1">广州 CAN</atr:DepartureStation>
+    <atr:DestinationStation contextRef="c1">北海 BHY</atr:DestinationStation>
+    <atr:FlightSegment contextRef="c1">2</atr:FlightSegment>
+    <atr:Carrier contextRef="c1">南航</atr:Carrier>
+    <atr:Flight contextRef="c1">CZ8866</atr:Flight>
+    <atr:Class contextRef="c1">V</atr:Class>
+    <atr:CarrierDate contextRef="c1">2021-07-27</atr:CarrierDate>
+    <atr:DepartureTime contextRef="c1">22:50</atr:DepartureTime>
+    <atr:FareBasis contextRef="c1">Y50</atr:FareBasis>
+    <atr:EffectiveDate contextRef="c1" xsi:nil="true"/>
+    <atr:ExpirationDate contextRef="c1" xsi:nil="true"/>
+    <atr:FreeBaggageAllowance contextRef="c1">20K</atr:FreeBaggageAllowance>
+  </atr:DetailInformationOfAirTicketTuple>
+  <atr:Fare contextRef="c1" unitRef="u1" decimals="2">477.06</atr:Fare>
+  <atr:FuelSurcharge contextRef="c1" unitRef="u1" decimals="2">45.87</atr:FuelSurcharge>
+  <atr:VatRate contextRef="c1" unitRef="u1" decimals="2">0.09</atr:VatRate>
+  <atr:VatTaxAmount contextRef="c1" unitRef="u1" decimals="2">47.07</atr:VatTaxAmount>
+  <atr:CivilAviationDevelopmentFund contextRef="c1" unitRef="u1" decimals="2">50.00</atr:CivilAviationDevelopmentFund>
+  <atr:OtherTaxes contextRef="c1" unitRef="u1" decimals="2">0</atr:OtherTaxes>
+  <atr:TotalAmount contextRef="c1" unitRef="u1" decimals="2">620.00</atr:TotalAmount>
+  <atr:ETicketNumber contextRef="c1">7841234567890</atr:ETicketNumber>
+  <atr:VerificationCode contextRef="c1">7890</atr:VerificationCode>
+  <atr:PromptInformation contextRef="c1">XXXX</atr:PromptInformation>
+  <atr:Insurance contextRef="c1">XXX</atr:Insurance>
+  <atr:AgentCode contextRef="c1">CAN001/08682256</atr:AgentCode>
+  <atr:IssueParty contextRef="c1">中国南方航空股份有限公司</atr:IssueParty>
+  <atr:IssueDate contextRef="c1">2021-07-28</atr:IssueDate>
+  <atr:IssuingStatus contextRef="c1">正常</atr:IssuingStatus>
+  <atr:MarkingOfDomesticOrInternational contextRef="c1">国内</atr:MarkingOfDomesticOrInternational>
+  <atr:NameOfPurchaser contextRef="c1">北京XXX公司</atr:NameOfPurchaser>
+  <atr:UnifiedSocialCreditCodeOfPurchaser contextRef="c1">9111000007311XXXX</atr:UnifiedSocialCreditCodeOfPurchaser>
+  <atr:ElectronicInvoiceAirTransportReceiptNumber contextRef="c1">12345678901234567891</atr:ElectronicInvoiceAirTransportReceiptNumber>
+</xbrl>

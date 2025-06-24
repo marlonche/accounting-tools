@@ -1,0 +1,41 @@
+{
+    "UnifiedSocialCreditCodeOfAccountingEntity": "9111000007311XXXX",
+    "Fare": "477.06",
+    "IssueParty": "中国南方航空股份有限公司",
+    "IssueDate": "2021-07-28",
+    "NameOfAccountingEntity": "ABC公司",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "98765678",
+            "PostingDate": "2021-07-30",
+            "AccountingPeriod": "20121-07",
+            "SummaryOfAccountingDocuments": "XXXXXXX",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借",
+                    "NameOfGeneralLedgerSubject": "在建工程",
+                    "NameOfSubsidiaryLedgerSubject": "差旅费",
+                    "RecordedAmount": "572.93"
+                },
+                {
+                    "DebitOrCredit": "借",
+                    "NameOfGeneralLedgerSubject": "应交税费",
+                    "NameOfSubsidiaryLedgerSubject": "进项税额",
+                    "RecordedAmount": "47.07"
+                },
+                {
+                    "DebitOrCredit": "贷",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "其他",
+                    "RecordedAmount": "620.00"
+                }
+            ]
+        }
+    ],
+    "ElectronicInvoiceAirTransportReceiptNumber": "12345678901234567890",
+    "WhetherInvoiceIsRedInvoice": "false",
+    "WhetherInvoiceHasBeenChecked": "true",
+    "WhetherInvoiceHasBeenBooked": "true",
+    "WhetherInvoiceHasBeenDeducted": "true",
+    "TaxPeriodOfInvoiceDeduction": "2021-07"
+}

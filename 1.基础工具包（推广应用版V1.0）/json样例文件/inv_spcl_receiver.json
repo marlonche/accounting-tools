@@ -1,0 +1,57 @@
+{
+    "UniqueCodeOfInvoice": "06200210011300341001",
+    "NameOfSeller": "甘肃****有限公司",
+    "TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller": "919600007000XXXXXX",
+    "TotalAmountExcludingTax": "97029.70",
+    "TotalTaxAmount": "970.30",
+    "TaxIncludedAmountInFigures": "98000.00",
+    "DateOfIssue": "2021-01-21",
+    "WhetherInvoiceIsRedInvoice": "false",
+    "WhetherInvoiceHasBeenChecked": "true",
+    "WhetherInvoiceHasBeenBooked": "true",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "91110000073XXXXXX",
+    "NameOfAccountingEntity": "XYZ",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "12345678",
+            "PostingDate": "2021-01-31",
+            "AccountingPeriod": "2021-01",
+            "SummaryOfAccountingDocuments": "和分包商结算工程款",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "合同履约成本",
+                    "NameOfSubsidiaryLedgerSubject": "分包成本",
+                    "RecordedAmount": "97029.70"
+                },
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "应交税费",
+                    "NameOfSubsidiaryLedgerSubject": "进项税额",
+                    "RecordedAmount": "970.30"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "工程款",
+                    "RecordedAmount": "98000.00"
+                }
+            ]
+        }
+    ],
+    "ContractNumber": "HT1234567890",
+    "MatchingStateBetweenBusinessDocumentsAndVatEInvoice": "已匹配",
+    "WhetherInvoiceHasBeenFactoredSoldOrSecuritized": "false",
+    "WhetherInvoiceHasBeenPaid": "true",
+    "NumberOfBankElectronicReceipt": "202001319029660024300000000001",
+    "WhetherInputVatHasBeenTransferredOut": "false",
+    "WhetherInvoiceUsageHasBeenConfirmed": "true",
+    "WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted": "true",
+    "BeginningOfPreTaxDeductionYearOfIncomeTax": "2021",
+    "EndOfPreTaxDeductionYearOfIncomeTax": "2021",
+    "BeginningOfExpenditurePeriodUnderAccrualBasis": "2021-01",
+    "EndOfExpenditurePeriodUnderAccrualBasis": "2021-01",
+    "UsageConfirmation": "XXXXXX",
+    "PeriodOfUsageConfirmation": "2021-01",
+    "AmountOfTransferredOutInputVat": "0"
+}

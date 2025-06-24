@@ -1,0 +1,53 @@
+{
+    "InvoiceNumber": "22442000000921291350",
+    "ContractNumber": "R9988888",
+    "MatchingStateBetweenBusinessDocumentsAndVatEinvoice": "已匹配",
+    "WhetherEinvoiceIsRedEinvoice": "false",
+    "WhetherEinvoiceHasBeenBooked": "true",
+    "WhetherEinvoiceHasBeenChecked": "true",
+    "WhetherEinvoiceHasBeenPaid": "true",
+    "NumberOfBankElectronicReceipt": "6FE0-4F2C-88AA",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "91440101MA5CLQ731R",
+    "NameOfAccountingEntity": "广州市兆丰商贸有限公司",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "R0009",
+            "PostingDate": "2022-06-30",
+            "AccountingPeriod": "2022-06",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "原材料",
+                    "RecordedAmount": "9000.00"
+                },
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "应交税费",
+                    "NameOfSubsidiaryLedgerSubject": "应交税费-进项税额",
+                    "RecordedAmount": "1170.00"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "银行存款",
+                    "RecordedAmount": "10170"
+                }
+            ]
+        }
+    ],
+    "WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted": "false",
+    "BeginningOfExpenditurePeriodUnderAccrualBasis": "2022-06",
+    "WhetherEinvoiceUsageHasBeenConfirmed": "true",
+    "UsageConfirmation": "xxxxx",
+    "WhetherInputVatHasBeenTransferredOut": "true",
+    "AmountOfTransferredOutInputVat": "1170.00",
+    "PeriodOfUsageConfirmation": "2022-06",
+    "BeginningOfPreTaxDeductionYearOfIncomeTax": "2022",
+    "EndOfPreTaxDeductionYearOfIncomeTax": "2022",
+    "EndOfExpenditurePeriodUnderAccrualBasis": "2022-12",
+    "SellerName": "中山市奕博照明有限公司",
+    "SellerIdNum": "91442000MA52PFXD1J",
+    "TotalAmWithoutTax": "9000",
+    "RequestTime": "2022-06-30",
+    "TotalTaxAm": "1170",
+    "TotalTax-includedAmount": "10170"
+}

@@ -1,0 +1,45 @@
+{
+    "InvoiceNumber": "22442000000921300354",
+    "DepreciationMethodsOfFixedAssetsAndAmortizationMethodsOfIntangibleAssets": "直线法",
+    "WhetherEinvoiceHasBeenFactoredSoldOrSecuritized": "true",
+    "MatchingStateBetweenBusinessDocumentsAndVatEinvoice": "三单匹配",
+    "ContractNumber": "202207159977",
+    "WhetherEinvoiceIsRedEinvoice": "false",
+    "WhetherEinvoiceHasBeenChecked": "true",
+    "WhetherEinvoiceHasBeenBooked": "true",
+    "WhetherEinvoiceHasBeenPaid": "true",
+    "NumberOfBankElectronicReceipt": "6FE0-4D2C-66EA",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "91440101MA5CLEH08W",
+    "NameOfAccountingEntity": "广州市万福布艺有限公司",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "07654",
+            "PostingDate": "2022-07-16",
+            "AccountingPeriod": "2022-07",
+            "SummaryOfAccountingDocuments": "",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "管理费用",
+                    "RecordedAmount": "500"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "银行存款",
+                    "RecordedAmount": "500"
+                }
+            ]
+        }
+    ],
+    "WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted": "false",
+    "BeginningOfPreTaxDeductionYearOfIncomeTax": "2022",
+    "EndOfPreTaxDeductionYearOfIncomeTax": "2022",
+    "BeginningOfExpenditurePeriodUnderAccrualBasis": "2022-01",
+    "EndOfExpenditurePeriodUnderAccrualBasis": "2022-12",
+    "SellerName": "广州市兆丰商贸有限公司",
+    "SellerIdNum": "91440101MA5CLQ731R",
+    "TotalAmWithoutTax": "500",
+    "TotalTaxAm": "0",
+    "TotalTax-includedAmount": "500",
+    "RequestTime": "2022-07-15"
+}

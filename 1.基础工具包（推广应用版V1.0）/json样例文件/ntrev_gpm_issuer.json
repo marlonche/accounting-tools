@@ -1,0 +1,142 @@
+{
+    "HEADER": [
+        {
+            "EINVOICE_TAG": "CZ-EI-00",
+            "EINVOICE_ID": "2800070000-12103000",
+            "VERSION": "2.0.0.1"
+        }
+    ],
+    "EINVOICE_DATA": [
+        {
+            "MAIN": [
+                {
+                    "EINVOICE_NAME": "中央非税收入缴款书_电子票",
+                    "EINVOICE_CODE": "00030121",
+                    "NON_TAX_PAY_NO": "0000700082",
+                    "NON_TAX_PAY_CODE": "0000002100042048",
+                    "RANDOM_NUMBER": "90007d",
+                    "EINVOICE_SPECIMEN_CODE": "0003012113",
+                    "SUPERVISOR_AREA_CODE": "000000",
+                    "BILL_DATE": "2021-08-24",
+                    "BILL_TIME": "18:47:37",
+                    "PAID_AMT": "200.00",
+                    "EXEC_AGENCY_PARTY": [
+                        {
+                            "EXEC_AGENCY_CODE": "0000003",
+                            "EXEC_AGENCY_NAME": "非试点单位",
+                            "REC_ACCT_TYPE": "2",
+                            "PAYEE_ACCT_NAME": "测试单位",
+                            "PAYEE_ACCT_NO": "7867867867",
+                            "PAYEE_ACCT_BANK_NAME": "中信银行股份有限公司北京交大支行"
+                        }
+                    ],
+                    "PAYER_PARTY": [
+                        {
+                            "PAYER_PARTY_TYPE_CODE": "1",
+                            "PAYER_PARTY_CODE": "",
+                            "PAYER_NAME": "test查看",
+                            "PAYER_ACC_NO": "",
+                            "PAYER_OPEN_BANK": ""
+                        }
+                    ],
+                    "PAY_IN_MET_CODE": "1",
+                    "BIZ_CODE": "afd578c8c2264b6bb05c19acba81fddd",
+                    "REMARK": "",
+                    "AUTHOR": "0000003",
+                    "CHECKER": "0000003",
+                    "SUPERVISOR_REMARK": "",
+                    "MAIN_EXT": [
+                        {
+                            "RELATED_INVOICE_CODE": "",
+                            "RELATED_INVOICE_NUMBER": ""
+                        }
+                    ],
+                    "INVOICING_PARTY_SEAL": [
+                        {
+                            "SEAL_ID": "c95ceecff8da4f9985fb031ae37904ad",
+                            "SEAL_NAME": "非试点单位",
+                            "SEAL_HASH": "5890559faaec52ea622ab9b8a6456592aed55377959617a38d85f948bdbbac9e"
+                        }
+                    ],
+                    "SUPERVISOR_PARTY_SEAL": [
+                        {
+                            "SEAL_ID": "c95ceecff8da4f9985fb031ae37904ad",
+                            "SEAL_NAME": "非试点单位",
+                            "SEAL_HASH": "5890559faaec52ea622ab9b8a6456592aed55377959617a38d85f948bdbbac9e"
+                        }
+                    ]
+                }
+            ],
+            "DETAILS": [
+                {
+                    "ITEM": [
+                        {
+                            "NON_TAX_CODE": "011002",
+                            "NON_TAX_PROJ_CODE": "000010000056",
+                            "NON_TAX_NAME": "电信网码号资源占用费",
+                            "PAY_NUMBER": "1.0000",
+                            "CHARGE_STAND_UNIT": "元",
+                            "CHARGE_STAND_NAME": "电信网码号资源占用费",
+                            "CHARGE_STAND": "100.0000",
+                            "PAID_DETAIL_AMT": "100.00",
+                            "ITEM_REMARK": ""
+                        },
+                        {
+                            "NON_TAX_CODE": "011002",
+                            "NON_TAX_PROJ_CODE": "000010000056",
+                            "NON_TAX_NAME": "电信网码号资源占用费",
+                            "PAY_NUMBER": "1.0000",
+                            "CHARGE_STAND_UNIT": "元",
+                            "CHARGE_STAND_NAME": "电信网码号资源占用费",
+                            "CHARGE_STAND": "100.0000",
+                            "PAID_DETAIL_AMT": "100.00",
+                            "ITEM_REMARK": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "EINVOICE_SIGNATURE": [
+        {
+            "INVOICING_PARTY_SIGNATURE": [
+                {
+                    "SIGNED_INFO": [
+                        {
+                            "REFERENCE": "/EINVOICE/HEADER|/EINVOICE/EINVOICE_DATA",
+                            "SIGNATURE_ALGORITHM": "SHA256withRSAEncryption",
+                            "SIGNATURE_FORMAT": "DETACH"
+                        }
+                    ],
+                    "SIGNATURE_TIME": "20210825102603+0800",
+                    "SIGNATURE_VALUE": "MIID0wYJKoZIhvcNAQcCoIIDxDCCA8ACAQExCTAHBgUrDgMCGjALBgkqhkiG9w0BBwGgggJfMIICWzCCAcSgAwIBAgIEWZuoxzANBgkqhkiG9w0BAQUFADByMQ8wDQYDVQQGDAbkuK3lm70xDzANBgNVBAgMBuemj+W7ujEPMA0GA1UEBwwG56aP5beeMRUwEwYDVQQKDAzljZrmgJ3ova/ku7YxFTATBgNVBAsMDOWNmuaAnei9r+S7tjEPMA0GA1UEAwwG5byg5pyIMB4XDTE3MDgyMjAzNDUxMVoXDTE5MDgxMjAzNDUxMVowcjEPMA0GA1UEBgwG5Lit5Zu9MQ8wDQYDVQQIDAbnpo/lu7oxDzANBgNVBAcMBuemj+W3njEVMBMGA1UECgwM5Y2a5oCd6L2v5Lu2MRUwEwYDVQQLDAzljZrmgJ3ova/ku7YxDzANBgNVBAMMBuW8oOaciDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAtOvx6Jt+0/nfUIrSxJU0Na2XjPK0TDENnAy5W612O2bBJxh0VVtZs+Tm64OTe737HPVu1fBkanj8j85j0eOGpg+weOnmYZt4cajDe+nZfa05Eio+PD71PfXrSPalxn82pFwZzaqNEiRqnO9Ics0lJiz0U1qj/S4ReFI4ln+a9DcCAwEAATANBgkqhkiG9w0BAQUFAAOBgQCGkA3gToLNjWSakh/wcHI0+Pn52OXRaIFAmg6ZuICscCjX4PGE4fWoHvtIXo8THtSHP5yqn/P6N3CDh54G1BuVdDmTpddcKSezqLHwtblHYTWbreJ6y+xUwyKV1GtdF+MWfbKvBwFmNy31lt7ylAxz7OKGOJXL9nYVK/YOGFFSLzGCAT4wggE6AgEBMHowcjEPMA0GA1UEBgwG5Lit5Zu9MQ8wDQYDVQQIDAbnpo/lu7oxDzANBgNVBAcMBuemj+W3njEVMBMGA1UECgwM5Y2a5oCd6L2v5Lu2MRUwEwYDVQQLDAzljZrmgJ3ova/ku7YxDzANBgNVBAMMBuW8oOaciAIEWZuoxzAJBgUrDgMCGgUAMA0GCSqGSIb3DQEBAQUABIGArLL+9630CF/MI9dWG+JFcnjT1w95V0e+9DO+/FZFFuf3W1GPRloOjocdIfoH8XpX+Z6fUOwjsVxlY4hdvyE5k2sFPZWUAJ+VYYzofgDFitMrkA8EPMAZAQL3AEzc6tpVXF8KPIVhk+T3jSx5JFeag6nICEG9D2w1m19COiAVGYShHDAaBgAxFgQULHKc/rGFL4TqU3A1GQEot+GNpnM=",
+                    "KEY_INFO": [
+                        {
+                            "SERIAL_NUMBER": "599BA8C7",
+                            "X509ISSUER_NAME": "CN=张月, OU=博思软件, O=博思软件, L=福州, ST=福建, C=中国"
+                        }
+                    ]
+                }
+            ],
+            "SUPERVISOR_PARTY_SIGNATURE": [
+                {
+                    "SIGNED_INFO": [
+                        {
+                            "REFERENCE": "hash(/EINVOICE/HEADER|/EINVOICE/EINVOICE_DATA)|/EINVOICE/EINVOICE_SIGNATURE/SIGNATURE[@ID='InvoicingParty']",
+                            "SIGNATURE_ALGORITHM": "SHA256withRSAEncryption",
+                            "SIGNATURE_FORMAT": "DETACH"
+                        }
+                    ],
+                    "SIGNATURE_TIME": "20210825102604+0800",
+                    "SIGNATURE_VALUE": "MIAGCSqGSIb3DQEHAqCAMIACAQExFjAJBgUrDgMCGgUAMAkGBSsOAwIaBQAwgAYJKoZIhvcNAQcBAACggDCCAegwggFRoAMCAQICAw9CQjANBgkqhkiG9w0BAQUFADAQMQ4wDAYDVQQKDAVNT0Y7QzAeFw0xODEwMDgwNTE3NThaFw0yODEwMDUwNTE3NThaMBAxDjAMBgNVBAoMBU1PRjtDMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvxJUxyduYzcRv8CxrIjOxNn+FOFEISXrxxR07mDH014hg10lqCQad77SROSDmB3L5uaUV0I16H+8Jlj8MVnjjAtZDHAG80sQ5bIKqI5IzyUb8j66fcTZ+aika88NnMpiCX2iXivlplMW54TUXq5YE+dBueSJ0eY1CxmM59Df7SQIDAQABo1AwTjAdBgNVHQ4EFgQUuOKxed+/ABZLIeB7M2mcsNrx3oMwHwYDVR0jBBgwFoAU55bTpqfRdwL9k/IFA2gXfSy0scgwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQBBwp8zH+V2AhhK7IrubV0/HTRNVDrRWqR8tAKdp8EvFWZ8OS8tJNubKfTrHwlm584dp+/hrGpaDovgSQWIFfX7dO04LNJnhddfsypqeTCaUP0/R1JnfOz62OWJgsMbqk9oaT29IHBDUNCNVVsT55G5Sja6qjOEP3x2kAv05jebFQAAMYICkDCCAUQCAQEwFzAQMQ4wDAYDVQQKDAVNT0Y7QwIDD0JCMAkGBSsOAwIaBQCggYgwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjEwODI1MDIyNDQyWjAjBgkqhkiG9w0BCQQxFgQUmdh0IBgD87Ykno7Eg85koRs2ZI8wKQYJKoZIhvcNAQk0MRwwGjAJBgUrDgMCGgUAoQ0GCSqGSIb3DQEBAQUAMA0GCSqGSIb3DQEBAQUABIGAFDxeSB7+3gd0R5K7jv2c8Erz+182VjYahEvBs+InYk2rgN8uezE6Iu3tg7YhUuGeC/sGqeOcW4kdbLANcmuM8oQ/feuCIaNTIA2g19brLHd1ytOiOJ4zsZhGz+ho6Lk6TbbdTk+mC6Z5wF3RJCHX7HLse0QYKymRxwRnfoP4nGgwggFEAgEBMBcwEDEOMAwGA1UECgwFTU9GO0MCAw9CQjAJBgUrDgMCGgUAoIGIMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIxMDgyNTAyMjQ0M1owIwYJKoZIhvcNAQkEMRYEFJnYdCAYA/O2JJ6OxIPOZKEbNmSPMCkGCSqGSIb3DQEJNDEcMBowCQYFKw4DAhoFAKENBgkqhkiG9w0BAQEFADANBgkqhkiG9w0BAQEFAASBgGgiJXs8J0yDPSB1kZ2mfRrEA9k94noHkm5QYB6zqVyiFbRgQD8Yk7sIdD8flmoVHAcTrmGTaJgX5nSVz64N6LOvjmQe8vIFC0HlzgJIIcCPXYpk+aiKDyyGymCzQmCjxdwk+Bmu7wILuaA0FeBuP7FGeJIKWqRRf28jwr/hdpwoAAAAAAAA",
+                    "KEY_INFO": [
+                        {
+                            "SERIAL_NUMBER": "1000002",
+                            "X509ISSUER_NAME": "O=\"MOF;C\""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "DateOfIssue": "2021-11-12",
+    "TotalAmountExcludingTax": "393.58",
+    "TaxRate": "0.09",
+    "TaxAmount": "35.42",
+    "WhetherInvoiceIsRedInvoice": "false",
+    "WhetherInvoiceHasBeenBooked": "true",
+    "WhetherInvoiceHasBeenDeducted": "true",
+    "TaxPeriodOfInvoiceDeduction": "2021-12",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "91110000073123456",
+    "NameOfAccountingEntity": "ABC",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "12345678",
+            "PostingDate": "2021-12-12",
+            "AccountingPeriod": "2021-12",
+            "SummaryOfAccountingDocuments": "火车票报销",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借",
+                    "NameOfGeneralLedgerSubject": "管理费用",
+                    "NameOfSubsidiaryLedgerSubject": "差旅费",
+                    "RecordedAmount": "393.58"
+                },
+                {
+                    "DebitOrCredit": "借",
+                    "NameOfGeneralLedgerSubject": "应交税费",
+                    "NameOfSubsidiaryLedgerSubject": "进项税额",
+                    "RecordedAmount": "35.42"
+                },
+                {
+                    "DebitOrCredit": "贷",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "其他",
+                    "RecordedAmount": "429.00"
+                }
+            ]
+        }
+    ]
+}

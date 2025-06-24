@@ -1,0 +1,44 @@
+{
+  "UniqueCodeOfInvoice": "3500498493851952627",
+  "AdmDivCode": "500000",
+  "StYear": "2024",
+  "TypeOfInvoice": "5214",
+  "VouDate": "2024-05-30",
+  "VoucherNo": "409633000562090030000800001",
+  "XPayAmt": "990.00",
+  "WhetherVoucherHasBeenBooked": "true",
+  "UnifiedSocialCreditCodeOfAccountingEntity": "911100007000XXXXXX",
+  "NameOfAccountingEntity": "XXXX小学",
+  "InformationOfAccountingDocumentsTuple": {
+    "NumberOfAccountingDocuments": "1",
+    "PostingDate": "2024-05-30",
+    "AccountingPeriod": "2024-05",
+    "SummaryOfAccountingDocuments": "XXXXXXXXXX摘要",
+    "InformationOfDebitAndCreditEntryTuple": [
+      {
+        "DebitOrCredit": "借方",
+        "NameOfGeneralLedgerSubject": "业务活动费用",
+        "NameOfSubsidiaryLedgerSubject": "商品和服务费用",
+        "RecordedAmount": "990.00"
+      },
+      {
+        "DebitOrCredit": "贷方",
+        "NameOfGeneralLedgerSubject": "财政拨款收入",
+        "NameOfSubsidiaryLedgerSubject": "一般公共预算财政拨款",
+        "RecordedAmount": "990.00"
+      },
+      {
+        "DebitOrCredit": "借方",
+        "NameOfGeneralLedgerSubject": "行政支出",
+        "NameOfSubsidiaryLedgerSubject": "日常公用经费",
+        "RecordedAmount": "990.00"
+      },
+      {
+        "DebitOrCredit": "贷方",
+        "NameOfGeneralLedgerSubject": "财政预算拨款收入",
+        "NameOfSubsidiaryLedgerSubject": "日常公用经费",
+        "RecordedAmount": "990.00"
+      }
+    ]
+  }
+}

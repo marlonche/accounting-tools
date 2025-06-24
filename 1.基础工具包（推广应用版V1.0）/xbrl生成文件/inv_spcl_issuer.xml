@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:inv="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/inv" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="inv_issuer_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">919600007000XXXXXX</identifier>
+    </entity>
+    <period>
+      <instant>2021-01-21</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <inv:TypeOfInvoice contextRef="c1">增值税电子专用发票</inv:TypeOfInvoice>
+  <inv:UniqueCodeOfInvoice contextRef="c1">06200210011300341001</inv:UniqueCodeOfInvoice>
+  <inv:LocationOfInvoice contextRef="c1">北京</inv:LocationOfInvoice>
+  <inv:CodeOfInvoice contextRef="c1">062002100113</inv:CodeOfInvoice>
+  <inv:NumberOfInvoice contextRef="c1">00341001</inv:NumberOfInvoice>
+  <inv:DateOfIssue contextRef="c1">2021-01-21</inv:DateOfIssue>
+  <inv:IdentifyingCode contextRef="c1">177458479993998670745</inv:IdentifyingCode>
+  <inv:NumberOfInvoiceMachine contextRef="c1">917000646623</inv:NumberOfInvoiceMachine>
+  <inv:NameOfPurchaser contextRef="c1">ABC公司</inv:NameOfPurchaser>
+  <inv:AddressPhoneNumberOfPurchaser contextRef="c1">北京市朝阳区xxxxx路X号</inv:AddressPhoneNumberOfPurchaser>
+  <inv:DepositBankAndAccountNumberOfPurchaser contextRef="c1">工商银行北京xxxx支行</inv:DepositBankAndAccountNumberOfPurchaser>
+  <inv:SecurityCode contextRef="c1">5/82&gt;775/61-31--06&lt;7816*/*71*5&gt;7&gt;-+29+6*9/&lt;06147&gt;851479226492*&lt;689301631-*06&lt;7811**0&gt;2&lt;5&gt;73-939&lt;2/9/&lt;83-2&lt;/*</inv:SecurityCode>
+  <inv:TotalAmountExcludingTax contextRef="c1" unitRef="u1" decimals="2">97029.70</inv:TotalAmountExcludingTax>
+  <inv:TotalTaxAmount contextRef="c1" unitRef="u1" decimals="2">970.30</inv:TotalTaxAmount>
+  <inv:TaxIncludedAmountInWords contextRef="c1">玖万捌仟元整</inv:TaxIncludedAmountInWords>
+  <inv:TaxIncludedAmountInFigures contextRef="c1" unitRef="u1" decimals="2">98000.00</inv:TaxIncludedAmountInFigures>
+  <inv:NameOfSeller contextRef="c1">甘肃****有限公司</inv:NameOfSeller>
+  <inv:AddressPhoneNumberOfSeller contextRef="c1">甘肃省XXXXXX</inv:AddressPhoneNumberOfSeller>
+  <inv:DepositBankAndAccountNumberOfSeller contextRef="c1">华夏银行北京xxxx支行</inv:DepositBankAndAccountNumberOfSeller>
+  <inv:Payee contextRef="c1">管理员</inv:Payee>
+  <inv:Reviewer contextRef="c1">管理员</inv:Reviewer>
+  <inv:Issuer contextRef="c1">管理员</inv:Issuer>
+  <inv:InformationOfTaxableGoodsOrServicesDetailItemsTuple>
+    <inv:NatureOfInvoiceLine contextRef="c1">普通行</inv:NatureOfInvoiceLine>
+    <inv:NameOfTaxableGoodsOrServices contextRef="c1">*建筑服务*工程款</inv:NameOfTaxableGoodsOrServices>
+    <inv:UnitPriceOfGoodsOrServices contextRef="c1" unitRef="u1" decimals="2">97029.70</inv:UnitPriceOfGoodsOrServices>
+    <inv:AmountExcludingTax contextRef="c1" unitRef="u1" decimals="2">97029.70</inv:AmountExcludingTax>
+    <inv:TaxRate contextRef="c1">1%</inv:TaxRate>
+    <inv:TaxAmount contextRef="c1" unitRef="u1" decimals="2">970.30</inv:TaxAmount>
+  </inv:InformationOfTaxableGoodsOrServicesDetailItemsTuple>
+  <inv:TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfPurchaser contextRef="c1">91110000073XXXXXX</inv:TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfPurchaser>
+  <inv:TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller contextRef="c1">919600007000XXXXXX</inv:TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller>
+  <inv:BeginningOfIncomePeriodUnderAccrualBasis contextRef="c1">2021-01</inv:BeginningOfIncomePeriodUnderAccrualBasis>
+  <inv:EndOfIncomePeriodUnderAccrualBasis contextRef="c1">2021-01</inv:EndOfIncomePeriodUnderAccrualBasis>
+</xbrl>

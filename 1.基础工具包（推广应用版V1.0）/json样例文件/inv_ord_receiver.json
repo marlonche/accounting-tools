@@ -1,0 +1,41 @@
+{
+    "UniqueCodeOfInvoice": "01100190021122595386",
+    "NameOfSeller": "北京***石油有限公司",
+    "TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller": "916400007000XXXXXX",
+    "TotalAmountExcludingTax": "235.40",
+    "TotalTaxAmount": "30.60",
+    "TaxIncludedAmountInFigures": "266.00",
+    "DateOfIssue": "2020-03-28",
+    "WhetherInvoiceIsRedInvoice": "false",
+    "WhetherInvoiceHasBeenChecked": "true",
+    "WhetherInvoiceHasBeenBooked": "true",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "91110000073123456",
+    "NameOfAccountingEntity": "ABC",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "12345678",
+            "PostingDate": "2020-08-31",
+            "AccountingPeriod": "2020-08",
+            "SummaryOfAccountingDocuments": "加油费报销",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "管理费用",
+                    "NameOfSubsidiaryLedgerSubject": "燃油费",
+                    "RecordedAmount": "266.00"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "燃油费",
+                    "RecordedAmount": "266.00"
+                }
+            ]
+        }
+    ],
+    "WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted": "true",
+    "BeginningOfPreTaxDeductionYearOfIncomeTax": "2020",
+    "EndOfPreTaxDeductionYearOfIncomeTax": "2020",
+    "BeginningOfExpenditurePeriodUnderAccrualBasis": "2020-08",
+    "EndOfExpenditurePeriodUnderAccrualBasis": "2020-08"
+}

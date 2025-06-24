@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ntrev="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/ntrev" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="ntrev_receiver_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">911100007000XXXXXX</identifier>
+    </entity>
+    <period>
+      <instant>2021-08-25</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <ntrev:EINVOICE_ID contextRef="c1">2800070000-12103000</ntrev:EINVOICE_ID>
+  <ntrev:BILL_DATE contextRef="c1">2021-08-24</ntrev:BILL_DATE>
+  <ntrev:PAID_AMT contextRef="c1" unitRef="u1" decimals="2">200.00</ntrev:PAID_AMT>
+  <ntrev:WhetherInvoiceIsRedInvoice contextRef="c1">false</ntrev:WhetherInvoiceIsRedInvoice>
+  <ntrev:WhetherInvoiceHasBeenChecked contextRef="c1">true</ntrev:WhetherInvoiceHasBeenChecked>
+  <ntrev:WhetherInvoiceHasBeenBooked contextRef="c1">false</ntrev:WhetherInvoiceHasBeenBooked>
+  <ntrev:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">911100007000XXXXXX</ntrev:UnifiedSocialCreditCodeOfAccountingEntity>
+  <ntrev:NameOfAccountingEntity contextRef="c1">XYZAAA公司</ntrev:NameOfAccountingEntity>
+  <ntrev:InformationOfAccountingDocumentsTuple>
+    <ntrev:NumberOfAccountingDocuments contextRef="c1">12345678</ntrev:NumberOfAccountingDocuments>
+    <ntrev:PostingDate contextRef="c1">2021-08-25</ntrev:PostingDate>
+    <ntrev:AccountingPeriod contextRef="c1">2021-08</ntrev:AccountingPeriod>
+    <ntrev:SummaryOfAccountingDocuments contextRef="c1">XXXXXXXXXX</ntrev:SummaryOfAccountingDocuments>
+    <ntrev:InformationOfDebitAndCreditEntryTuple>
+      <ntrev:DebitOrCredit contextRef="c1">借方</ntrev:DebitOrCredit>
+      <ntrev:NameOfGeneralLedgerSubject contextRef="c1">管理费用</ntrev:NameOfGeneralLedgerSubject>
+      <ntrev:NameOfSubsidiaryLedgerSubject contextRef="c1">差旅费</ntrev:NameOfSubsidiaryLedgerSubject>
+      <ntrev:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">200.00</ntrev:RecordedAmount>
+    </ntrev:InformationOfDebitAndCreditEntryTuple>
+    <ntrev:InformationOfDebitAndCreditEntryTuple>
+      <ntrev:DebitOrCredit contextRef="c1">贷方</ntrev:DebitOrCredit>
+      <ntrev:NameOfGeneralLedgerSubject contextRef="c1">应付账款</ntrev:NameOfGeneralLedgerSubject>
+      <ntrev:NameOfSubsidiaryLedgerSubject contextRef="c1">差旅报销费</ntrev:NameOfSubsidiaryLedgerSubject>
+      <ntrev:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">200.00</ntrev:RecordedAmount>
+    </ntrev:InformationOfDebitAndCreditEntryTuple>
+  </ntrev:InformationOfAccountingDocumentsTuple>
+</xbrl>

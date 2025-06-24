@@ -1,0 +1,32 @@
+{
+    "EINVOICE_ID": "2800070000-12103000",
+    "BILL_DATE": "2021-08-24",
+    "PAID_AMT": "200.00",
+    "WhetherInvoiceIsRedInvoice": "false",
+    "WhetherInvoiceHasBeenChecked": "true",
+    "WhetherInvoiceHasBeenBooked": "false",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "911100007000XXXXXX",
+    "NameOfAccountingEntity": "XYZAAA公司",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "12345678",
+            "PostingDate": "2021-08-25",
+            "AccountingPeriod": "2021-08",
+            "SummaryOfAccountingDocuments": "XXXXXXXXXX",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "管理费用",
+                    "NameOfSubsidiaryLedgerSubject": "差旅费",
+                    "RecordedAmount": "200.00"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "差旅报销费",
+                    "RecordedAmount": "200.00"
+                }
+            ]
+        }
+    ]
+}

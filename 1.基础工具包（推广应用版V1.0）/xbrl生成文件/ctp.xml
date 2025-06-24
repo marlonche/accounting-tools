@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:ctp="http://xbrl.mof.gov.cn/taxonomy/2024-05-30/ctp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="ctp_entry_point_2024-05-30.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">911100007000XXXXXX</identifier>
+    </entity>
+    <period>
+      <instant>2024-05-30</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <ctp:UniqueCodeOfInvoice contextRef="c1">3500498493851952627</ctp:UniqueCodeOfInvoice>
+  <ctp:AdmDivCode contextRef="c1">500000</ctp:AdmDivCode>
+  <ctp:StYear contextRef="c1">2024</ctp:StYear>
+  <ctp:TypeOfInvoice contextRef="c1">5214</ctp:TypeOfInvoice>
+  <ctp:VouDate contextRef="c1">2024-05-30</ctp:VouDate>
+  <ctp:VoucherNo contextRef="c1">409633000562090030000800001</ctp:VoucherNo>
+  <ctp:XPayAmt contextRef="c1" unitRef="u1" decimals="2">990.00</ctp:XPayAmt>
+  <ctp:WhetherVoucherHasBeenBooked contextRef="c1">true</ctp:WhetherVoucherHasBeenBooked>
+  <ctp:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">911100007000XXXXXX</ctp:UnifiedSocialCreditCodeOfAccountingEntity>
+  <ctp:NameOfAccountingEntity contextRef="c1">XXXX小学</ctp:NameOfAccountingEntity>
+  <ctp:InformationOfAccountingDocumentsTuple>
+    <ctp:NumberOfAccountingDocuments contextRef="c1">1</ctp:NumberOfAccountingDocuments>
+    <ctp:PostingDate contextRef="c1">2024-05-30</ctp:PostingDate>
+    <ctp:AccountingPeriod contextRef="c1">2024-05</ctp:AccountingPeriod>
+    <ctp:SummaryOfAccountingDocuments contextRef="c1">XXXXXXXXXX摘要</ctp:SummaryOfAccountingDocuments>
+    <ctp:InformationOfDebitAndCreditEntryTuple>
+      <ctp:DebitOrCredit contextRef="c1">借方</ctp:DebitOrCredit>
+      <ctp:NameOfGeneralLedgerSubject contextRef="c1">业务活动费用</ctp:NameOfGeneralLedgerSubject>
+      <ctp:NameOfSubsidiaryLedgerSubject contextRef="c1">商品和服务费用</ctp:NameOfSubsidiaryLedgerSubject>
+      <ctp:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">990.00</ctp:RecordedAmount>
+    </ctp:InformationOfDebitAndCreditEntryTuple>
+    <ctp:InformationOfDebitAndCreditEntryTuple>
+      <ctp:DebitOrCredit contextRef="c1">贷方</ctp:DebitOrCredit>
+      <ctp:NameOfGeneralLedgerSubject contextRef="c1">财政拨款收入</ctp:NameOfGeneralLedgerSubject>
+      <ctp:NameOfSubsidiaryLedgerSubject contextRef="c1">一般公共预算财政拨款</ctp:NameOfSubsidiaryLedgerSubject>
+      <ctp:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">990.00</ctp:RecordedAmount>
+    </ctp:InformationOfDebitAndCreditEntryTuple>
+    <ctp:InformationOfDebitAndCreditEntryTuple>
+      <ctp:DebitOrCredit contextRef="c1">借方</ctp:DebitOrCredit>
+      <ctp:NameOfGeneralLedgerSubject contextRef="c1">行政支出</ctp:NameOfGeneralLedgerSubject>
+      <ctp:NameOfSubsidiaryLedgerSubject contextRef="c1">日常公用经费</ctp:NameOfSubsidiaryLedgerSubject>
+      <ctp:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">990.00</ctp:RecordedAmount>
+    </ctp:InformationOfDebitAndCreditEntryTuple>
+    <ctp:InformationOfDebitAndCreditEntryTuple>
+      <ctp:DebitOrCredit contextRef="c1">贷方</ctp:DebitOrCredit>
+      <ctp:NameOfGeneralLedgerSubject contextRef="c1">财政预算拨款收入</ctp:NameOfGeneralLedgerSubject>
+      <ctp:NameOfSubsidiaryLedgerSubject contextRef="c1">日常公用经费</ctp:NameOfSubsidiaryLedgerSubject>
+      <ctp:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">990.00</ctp:RecordedAmount>
+    </ctp:InformationOfDebitAndCreditEntryTuple>
+  </ctp:InformationOfAccountingDocumentsTuple>
+</xbrl>

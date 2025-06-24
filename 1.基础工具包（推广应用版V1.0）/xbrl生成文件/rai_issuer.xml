@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:rai="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/rai" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="rai_issuer_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">TEST0000</identifier>
+    </entity>
+    <period>
+      <instant>2021-11-12</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <rai:ETicketNumber contextRef="c1">10001002550218A019731</rai:ETicketNumber>
+  <rai:IssueParty contextRef="c1">12306官网</rai:IssueParty>
+  <rai:DateOfIssue contextRef="c1">2021-11-12</rai:DateOfIssue>
+  <rai:DepartureStation contextRef="c1">北京西</rai:DepartureStation>
+  <rai:PhonicsOfDepartureStation contextRef="c1">Beijingxi</rai:PhonicsOfDepartureStation>
+  <rai:DestinationStation contextRef="c1">襄樊</rai:DestinationStation>
+  <rai:PhonicsOfDestinationStation contextRef="c1">Xiangfan</rai:PhonicsOfDestinationStation>
+  <rai:TrainNumber contextRef="c1">Z37</rai:TrainNumber>
+  <rai:TravelDate contextRef="c1">2021-11-10</rai:TravelDate>
+  <rai:DepartureTime contextRef="c1">20:22</rai:DepartureTime>
+  <rai:Remarks contextRef="c1">仅供报销使用</rai:Remarks>
+  <rai:NameOfPurchaser contextRef="c1">ABC公司</rai:NameOfPurchaser>
+  <rai:AddressPhoneNumberOfPurchaser contextRef="c1">北京市朝阳区xxxxx路X号</rai:AddressPhoneNumberOfPurchaser>
+  <rai:DepositBankAndAccountNumberOfPurchaser contextRef="c1">工商银行北京xxxx支行</rai:DepositBankAndAccountNumberOfPurchaser>
+  <rai:TaxRate contextRef="c1" unitRef="u1" decimals="2">0.09</rai:TaxRate>
+  <rai:TaxAmount contextRef="c1" unitRef="u1" decimals="2">35.42</rai:TaxAmount>
+  <rai:TotalAmountExcludingTax contextRef="c1" unitRef="u1" decimals="2">393.58</rai:TotalAmountExcludingTax>
+  <rai:AirConditioningCharacteristics contextRef="c1">新空调</rai:AirConditioningCharacteristics>
+  <rai:SeatLevel contextRef="c1">软卧</rai:SeatLevel>
+  <rai:Carriage contextRef="c1">01车</rai:Carriage>
+  <rai:Seat contextRef="c1">021号下铺</rai:Seat>
+  <rai:Fare contextRef="c1" unitRef="u1" decimals="2">429.00</rai:Fare>
+  <rai:TypeOfRailwayTicket contextRef="c1">孩</rai:TypeOfRailwayTicket>
+  <rai:IdNumber contextRef="c1">4324251988****1234</rai:IdNumber>
+  <rai:Name contextRef="c1">李某瑞</rai:Name>
+  <rai:ElectronicInvoiceRailwayETicketNumber contextRef="c1">1000100255T2119012345</rai:ElectronicInvoiceRailwayETicketNumber>
+  <rai:IssuePartyCode contextRef="c1">TEST0000</rai:IssuePartyCode>
+  <rai:TypeOfBusiness contextRef="c1">售</rai:TypeOfBusiness>
+  <rai:UnifiedSocialCreditCodeOfPurchaser contextRef="c1">91110000073123456</rai:UnifiedSocialCreditCodeOfPurchaser>
+  <rai:NameOfSeller contextRef="c1">中国国家铁路集团</rai:NameOfSeller>
+  <rai:UnifiedSocialCreditCodeOfSeller contextRef="c1">91100000000013477B</rai:UnifiedSocialCreditCodeOfSeller>
+  <rai:AddressPhoneNumberOfSeller contextRef="c1">海淀区复兴路</rai:AddressPhoneNumberOfSeller>
+  <rai:DepositBankAndAccountNumberOfSeller contextRef="c1">工商银行北京铁道支行</rai:DepositBankAndAccountNumberOfSeller>
+  <rai:TypeOfVoucher contextRef="c1">电子发票（铁路电子客票）</rai:TypeOfVoucher>
+</xbrl>

@@ -1,0 +1,43 @@
+{
+    "IdentifyingCode": "C10303110004552019030390296600243000000000019444",
+    "Currency": "CNY",
+    "TransactionAmountInFigures": "1000000.00",
+    "ContractNumber": "HT123456",
+    "TypeOfInvoice": "增值税电子专用发票",
+    "DateOfIssue": "2019-12-14",
+    "AmountPayableAndReceivable": "1000000.00",
+    "WhetherInvoiceHasBeenClaimed": "true",
+    "WhetherReceiptHasBeenBooked": "true",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "916200007000123456",
+    "NameOfAccountingEntity": "XYZ",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "123456",
+            "PostingDate": "2019-12-31",
+            "AccountingPeriod": "2019-12",
+            "SummaryOfAccountingDocuments": "支付供应商分包款",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "工程款",
+                    "RecordedAmount": "800000.00"
+                },
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "应付账款",
+                    "NameOfSubsidiaryLedgerSubject": "其他",
+                    "RecordedAmount": "200000.00"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "银行存款",
+                    "RecordedAmount": "1000000.00"
+                }
+            ]
+        }
+    ],
+    "WhetherReceiptHasBeenReconciled": "true",
+    "WhetherReceiptHasBeenTransferredToBank": "false",
+    "UniqueCodeOfInvoice": "06200210011300341001"
+}

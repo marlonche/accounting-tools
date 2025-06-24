@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:inv="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/inv" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="inv_receiver_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">91110000073XXXXXX</identifier>
+    </entity>
+    <period>
+      <instant>2021-01-31</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <inv:UniqueCodeOfInvoice contextRef="c1">06200210011300341001</inv:UniqueCodeOfInvoice>
+  <inv:NameOfSeller contextRef="c1">甘肃****有限公司</inv:NameOfSeller>
+  <inv:TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller contextRef="c1">919600007000XXXXXX</inv:TaxpayerIdentificationNumberUnifiedSocialCreditCodeOfSeller>
+  <inv:TotalAmountExcludingTax contextRef="c1" unitRef="u1" decimals="2">97029.70</inv:TotalAmountExcludingTax>
+  <inv:TotalTaxAmount contextRef="c1" unitRef="u1" decimals="2">970.30</inv:TotalTaxAmount>
+  <inv:TaxIncludedAmountInFigures contextRef="c1" unitRef="u1" decimals="2">98000.00</inv:TaxIncludedAmountInFigures>
+  <inv:DateOfIssue contextRef="c1">2021-01-21</inv:DateOfIssue>
+  <inv:WhetherInvoiceIsRedInvoice contextRef="c1">false</inv:WhetherInvoiceIsRedInvoice>
+  <inv:WhetherInvoiceHasBeenChecked contextRef="c1">true</inv:WhetherInvoiceHasBeenChecked>
+  <inv:WhetherInvoiceHasBeenBooked contextRef="c1">true</inv:WhetherInvoiceHasBeenBooked>
+  <inv:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">91110000073XXXXXX</inv:UnifiedSocialCreditCodeOfAccountingEntity>
+  <inv:NameOfAccountingEntity contextRef="c1">XYZ</inv:NameOfAccountingEntity>
+  <inv:InformationOfAccountingDocumentsTuple>
+    <inv:NumberOfAccountingDocuments contextRef="c1">12345678</inv:NumberOfAccountingDocuments>
+    <inv:PostingDate contextRef="c1">2021-01-31</inv:PostingDate>
+    <inv:AccountingPeriod contextRef="c1">2021-01</inv:AccountingPeriod>
+    <inv:SummaryOfAccountingDocuments contextRef="c1">和分包商结算工程款</inv:SummaryOfAccountingDocuments>
+    <inv:InformationOfDebitAndCreditEntryTuple>
+      <inv:DebitOrCredit contextRef="c1">借方</inv:DebitOrCredit>
+      <inv:NameOfGeneralLedgerSubject contextRef="c1">合同履约成本</inv:NameOfGeneralLedgerSubject>
+      <inv:NameOfSubsidiaryLedgerSubject contextRef="c1">分包成本</inv:NameOfSubsidiaryLedgerSubject>
+      <inv:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">97029.70</inv:RecordedAmount>
+    </inv:InformationOfDebitAndCreditEntryTuple>
+    <inv:InformationOfDebitAndCreditEntryTuple>
+      <inv:DebitOrCredit contextRef="c1">借方</inv:DebitOrCredit>
+      <inv:NameOfGeneralLedgerSubject contextRef="c1">应交税费</inv:NameOfGeneralLedgerSubject>
+      <inv:NameOfSubsidiaryLedgerSubject contextRef="c1">进项税额</inv:NameOfSubsidiaryLedgerSubject>
+      <inv:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">970.30</inv:RecordedAmount>
+    </inv:InformationOfDebitAndCreditEntryTuple>
+    <inv:InformationOfDebitAndCreditEntryTuple>
+      <inv:DebitOrCredit contextRef="c1">贷方</inv:DebitOrCredit>
+      <inv:NameOfGeneralLedgerSubject contextRef="c1">应付账款</inv:NameOfGeneralLedgerSubject>
+      <inv:NameOfSubsidiaryLedgerSubject contextRef="c1">工程款</inv:NameOfSubsidiaryLedgerSubject>
+      <inv:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">98000.00</inv:RecordedAmount>
+    </inv:InformationOfDebitAndCreditEntryTuple>
+  </inv:InformationOfAccountingDocumentsTuple>
+  <inv:ContractNumber contextRef="c1">HT1234567890</inv:ContractNumber>
+  <inv:MatchingStateBetweenBusinessDocumentsAndVatEInvoice contextRef="c1">已匹配</inv:MatchingStateBetweenBusinessDocumentsAndVatEInvoice>
+  <inv:WhetherInvoiceHasBeenFactoredSoldOrSecuritized contextRef="c1">false</inv:WhetherInvoiceHasBeenFactoredSoldOrSecuritized>
+  <inv:WhetherInvoiceHasBeenPaid contextRef="c1">true</inv:WhetherInvoiceHasBeenPaid>
+  <inv:NumberOfBankElectronicReceipt contextRef="c1">202001319029660024300000000001</inv:NumberOfBankElectronicReceipt>
+  <inv:WhetherInputVatHasBeenTransferredOut contextRef="c1">false</inv:WhetherInputVatHasBeenTransferredOut>
+  <inv:WhetherInvoiceUsageHasBeenConfirmed contextRef="c1">true</inv:WhetherInvoiceUsageHasBeenConfirmed>
+  <inv:WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted contextRef="c1">true</inv:WhetherPreTaxDeductionOfIncomeTaxHasBeenCompleted>
+  <inv:BeginningOfPreTaxDeductionYearOfIncomeTax contextRef="c1">2021</inv:BeginningOfPreTaxDeductionYearOfIncomeTax>
+  <inv:EndOfPreTaxDeductionYearOfIncomeTax contextRef="c1">2021</inv:EndOfPreTaxDeductionYearOfIncomeTax>
+  <inv:BeginningOfExpenditurePeriodUnderAccrualBasis contextRef="c1">2021-01</inv:BeginningOfExpenditurePeriodUnderAccrualBasis>
+  <inv:EndOfExpenditurePeriodUnderAccrualBasis contextRef="c1">2021-01</inv:EndOfExpenditurePeriodUnderAccrualBasis>
+  <inv:UsageConfirmation contextRef="c1">XXXXXX</inv:UsageConfirmation>
+  <inv:PeriodOfUsageConfirmation contextRef="c1">2021-01</inv:PeriodOfUsageConfirmation>
+  <inv:AmountOfTransferredOutInputVat contextRef="c1" unitRef="u1" decimals="2">0</inv:AmountOfTransferredOutInputVat>
+</xbrl>

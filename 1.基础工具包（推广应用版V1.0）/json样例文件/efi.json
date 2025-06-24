@@ -1,0 +1,34 @@
+{
+    "EInvoiceID": "2800070000-12103000",
+    "InvoicingPartyName": "A单位",
+    "InvoicingPartyCode": "923456007000XXXXXX",
+    "IssueDate": "2023-06-28",
+    "TotalAmount": "8500.00",
+    "WhetherInvoiceIsRedInvoice": "false",
+    "WhetherInvoiceHasBeenChecked": "true",
+    "WhetherInvoiceHasBeenBooked": "true",
+    "UnifiedSocialCreditCodeOfAccountingEntity": "911100007000XXXXXX",
+    "NameOfAccountingEntity": "XXX有限公司",
+    "InformationOfAccountingDocumentsTuple": [
+        {
+            "NumberOfAccountingDocuments": "12345678",
+            "PostingDate": "2023-06-30",
+            "AccountingPeriod": "2023-06",
+            "SummaryOfAccountingDocuments": "XXXXXXXXXX",
+            "InformationOfDebitAndCreditEntryTuple": [
+                {
+                    "DebitOrCredit": "借方",
+                    "NameOfGeneralLedgerSubject": "营业外支出",
+                    "NameOfSubsidiaryLedgerSubject": "罚没款",
+                    "RecordedAmount": "8500.00"
+                },
+                {
+                    "DebitOrCredit": "贷方",
+                    "NameOfGeneralLedgerSubject": "其他应付款",
+                    "NameOfSubsidiaryLedgerSubject": "赔偿罚款",
+                    "RecordedAmount": "8500.00"
+                }
+            ]
+        }
+    ]
+}

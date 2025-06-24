@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:atr="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/atr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="atr_receiver_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">9111000007311XXXX</identifier>
+    </entity>
+    <period>
+      <instant>2021-07-30</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <atr:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">9111000007311XXXX</atr:UnifiedSocialCreditCodeOfAccountingEntity>
+  <atr:Fare contextRef="c1" unitRef="u1" decimals="2">477.06</atr:Fare>
+  <atr:IssueParty contextRef="c1">中国南方航空股份有限公司</atr:IssueParty>
+  <atr:IssueDate contextRef="c1">2021-07-28</atr:IssueDate>
+  <atr:NameOfAccountingEntity contextRef="c1">ABC公司</atr:NameOfAccountingEntity>
+  <atr:InformationOfAccountingDocumentsTuple>
+    <atr:NumberOfAccountingDocuments contextRef="c1">98765678</atr:NumberOfAccountingDocuments>
+    <atr:PostingDate contextRef="c1">2021-07-30</atr:PostingDate>
+    <atr:AccountingPeriod contextRef="c1">20121-07</atr:AccountingPeriod>
+    <atr:SummaryOfAccountingDocuments contextRef="c1">XXXXXXX</atr:SummaryOfAccountingDocuments>
+    <atr:InformationOfDebitAndCreditEntryTuple>
+      <atr:DebitOrCredit contextRef="c1">借</atr:DebitOrCredit>
+      <atr:NameOfGeneralLedgerSubject contextRef="c1">在建工程</atr:NameOfGeneralLedgerSubject>
+      <atr:NameOfSubsidiaryLedgerSubject contextRef="c1">差旅费</atr:NameOfSubsidiaryLedgerSubject>
+      <atr:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">572.93</atr:RecordedAmount>
+    </atr:InformationOfDebitAndCreditEntryTuple>
+    <atr:InformationOfDebitAndCreditEntryTuple>
+      <atr:DebitOrCredit contextRef="c1">借</atr:DebitOrCredit>
+      <atr:NameOfGeneralLedgerSubject contextRef="c1">应交税费</atr:NameOfGeneralLedgerSubject>
+      <atr:NameOfSubsidiaryLedgerSubject contextRef="c1">进项税额</atr:NameOfSubsidiaryLedgerSubject>
+      <atr:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">47.07</atr:RecordedAmount>
+    </atr:InformationOfDebitAndCreditEntryTuple>
+    <atr:InformationOfDebitAndCreditEntryTuple>
+      <atr:DebitOrCredit contextRef="c1">贷</atr:DebitOrCredit>
+      <atr:NameOfGeneralLedgerSubject contextRef="c1">应付账款</atr:NameOfGeneralLedgerSubject>
+      <atr:NameOfSubsidiaryLedgerSubject contextRef="c1">其他</atr:NameOfSubsidiaryLedgerSubject>
+      <atr:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">620.00</atr:RecordedAmount>
+    </atr:InformationOfDebitAndCreditEntryTuple>
+  </atr:InformationOfAccountingDocumentsTuple>
+  <atr:ElectronicInvoiceAirTransportReceiptNumber contextRef="c1">12345678901234567890</atr:ElectronicInvoiceAirTransportReceiptNumber>
+  <atr:WhetherInvoiceIsRedInvoice contextRef="c1">false</atr:WhetherInvoiceIsRedInvoice>
+  <atr:WhetherInvoiceHasBeenChecked contextRef="c1">true</atr:WhetherInvoiceHasBeenChecked>
+  <atr:WhetherInvoiceHasBeenBooked contextRef="c1">true</atr:WhetherInvoiceHasBeenBooked>
+  <atr:WhetherInvoiceHasBeenDeducted contextRef="c1">true</atr:WhetherInvoiceHasBeenDeducted>
+  <atr:TaxPeriodOfInvoiceDeduction contextRef="c1">2021-07</atr:TaxPeriodOfInvoiceDeduction>
+</xbrl>

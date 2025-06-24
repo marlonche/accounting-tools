@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:efi="http://xbrl.mof.gov.cn/taxonomy/2023-12-31/efi" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:schemaRef xlink:type="simple" xlink:href="efi_entry_point_2023-12-31.xsd"/>
+  <context id="c1">
+    <entity>
+      <identifier scheme="http://xbrl.mof.gov.cn">911100007000XXXXXX</identifier>
+    </entity>
+    <period>
+      <instant>2023-06-30</instant>
+    </period>
+  </context>
+  <unit id="u1">
+    <measure>iso4217:CNY</measure>
+  </unit>
+  <efi:EInvoiceID contextRef="c1">2800070000-12103000</efi:EInvoiceID>
+  <efi:InvoicingPartyName contextRef="c1">A单位</efi:InvoicingPartyName>
+  <efi:InvoicingPartyCode contextRef="c1">923456007000XXXXXX</efi:InvoicingPartyCode>
+  <efi:IssueDate contextRef="c1">2023-06-28</efi:IssueDate>
+  <efi:TotalAmount contextRef="c1" unitRef="u1" decimals="2">8500.00</efi:TotalAmount>
+  <efi:WhetherInvoiceIsRedInvoice contextRef="c1">false</efi:WhetherInvoiceIsRedInvoice>
+  <efi:WhetherInvoiceHasBeenChecked contextRef="c1">true</efi:WhetherInvoiceHasBeenChecked>
+  <efi:WhetherInvoiceHasBeenBooked contextRef="c1">true</efi:WhetherInvoiceHasBeenBooked>
+  <efi:UnifiedSocialCreditCodeOfAccountingEntity contextRef="c1">911100007000XXXXXX</efi:UnifiedSocialCreditCodeOfAccountingEntity>
+  <efi:NameOfAccountingEntity contextRef="c1">XXX有限公司</efi:NameOfAccountingEntity>
+  <efi:InformationOfAccountingDocumentsTuple>
+    <efi:NumberOfAccountingDocuments contextRef="c1">12345678</efi:NumberOfAccountingDocuments>
+    <efi:PostingDate contextRef="c1">2023-06-30</efi:PostingDate>
+    <efi:AccountingPeriod contextRef="c1">2023-06</efi:AccountingPeriod>
+    <efi:SummaryOfAccountingDocuments contextRef="c1">XXXXXXXXXX</efi:SummaryOfAccountingDocuments>
+    <efi:InformationOfDebitAndCreditEntryTuple>
+      <efi:DebitOrCredit contextRef="c1">借方</efi:DebitOrCredit>
+      <efi:NameOfGeneralLedgerSubject contextRef="c1">营业外支出</efi:NameOfGeneralLedgerSubject>
+      <efi:NameOfSubsidiaryLedgerSubject contextRef="c1">罚没款</efi:NameOfSubsidiaryLedgerSubject>
+      <efi:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">8500.00</efi:RecordedAmount>
+    </efi:InformationOfDebitAndCreditEntryTuple>
+    <efi:InformationOfDebitAndCreditEntryTuple>
+      <efi:DebitOrCredit contextRef="c1">贷方</efi:DebitOrCredit>
+      <efi:NameOfGeneralLedgerSubject contextRef="c1">其他应付款</efi:NameOfGeneralLedgerSubject>
+      <efi:NameOfSubsidiaryLedgerSubject contextRef="c1">赔偿罚款</efi:NameOfSubsidiaryLedgerSubject>
+      <efi:RecordedAmount contextRef="c1" unitRef="u1" decimals="2">8500.00</efi:RecordedAmount>
+    </efi:InformationOfDebitAndCreditEntryTuple>
+  </efi:InformationOfAccountingDocumentsTuple>
+</xbrl>
