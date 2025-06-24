@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import inspect
 import sys
@@ -65,13 +66,33 @@ def select_folder(strHint):
 root = tk.Tk()
 # Set window properties
 root.title("Invoice Tools")
+# Set the window background color to light gray
+root.configure(bg='#2D3639')
 # Maximize the window
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
 root.geometry("%dx%d+0+0" % (w, h))
+
 # Add widgets here (e.g., labels, buttons)
-# For example:
-label = tk.Label(root, text="Hello, Tkinter!")
-label.pack()
+# Operation description:
+opDescript = tk.Label(root, text="Hello, Tkinter!", width=20, fg="#BFB5A7", bg="#2D3639")
+opDescript.grid(row=1, column=0, padx=5, pady=10)
+
+#Input files
+inputFiles = tk.Text(root, width=40, height=20, fg="black", bg="white")
+inputFiles.grid(row=2, column=0, padx=10, pady=10)
+
+#Start button
+def on_start():
+    print("button clicked")
+
+
+btStart = tk.Button(root, text="Start", width=6, height=2, fg="white", bg= "gray", command=on_start)
+btStart.grid(row=2, column=1, padx=10, pady=10)
+
+#Output files
+outputFiles = tk.Text(root, width=40, height=20, fg="black", bg="white")
+outputFiles.grid(row=2, column=2, padx=10, pady=10)
+
 
 # Start the main event loop
 root.mainloop()
