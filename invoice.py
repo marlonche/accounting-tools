@@ -101,7 +101,6 @@ options = [
     "XBRL转JSON",
     "XML转JSON",
     "从PDF中提取XML报文",
-    "从OFD或PDF中提取出XBRL文本",
 ]
 
 descriptions = [
@@ -112,7 +111,6 @@ descriptions = [
     "Input里面如果是XBRL文本，则输出JSON文本到Output，Input里面如果是.xbrl文件或目录，则输出.json文件(Output没有指定输出目录就输出到源文件所在目录)",
     "Input里面如果是XML文本，则输出JSON文本到Output，Input里面如果是.xml文件或目录，则输出.json文件(Output没有指定输出目录就输出到源文件所在目录)",
     "仅适用于中央财政电子票据, Input里面指定一个PDF文件名，Output输出XML文本",
-    "Input里面指定一个OFD或PDF文件名，Output输出XBRL文本",
 ]
 
 selectedIndex = 0
@@ -157,7 +155,6 @@ options = [
     "XBRL转JSON",
     "XML转JSON",
     "从PDF中提取XML报文",
-    "从OFD或PDF中提取出XBRL文本",
 ]
 '''
 #### Start button
@@ -181,9 +178,10 @@ def on_start():
             mapInputFiles[ext].add(line)
     strDestDir = ""
     lines = outputBox.get("1.0", tk.END).splitlines()
-    if len(lines) == 1 and Path(lines[0]).is_dir():
-        strDestDir = lines[0]
-        Path(strDestDir).mkdir(parents=True, exist_ok=True)
+    if len(lines) == 1:
+        path = Path(lines[0])
+        if path.exists() and path.is_dir():
+            strDestDir = lines[0]
     match selectedIndex:
         case 0:
             for strOfd in mapInputFiles["ofd"]:
@@ -204,8 +202,21 @@ def on_start():
                 if not strDestDir:
                     strDestDir = str(path.parent)
                 VoucherFileUtil.extractAttachFromPDF(strPdf, strDestDir) 
-            
-            #String extractXMLFromPDF(String pdfFilePath)
+        case 2:
+            setPdf = mapInputFiles["pdf"]
+            for strPdf in setPdf:
+                path = Path(strPdf)
+                strDestFile = str(path.withsuffix("xml"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xml"))
+                strXml = VoucherFileUtil.extractXMLFromPDF(strPdf)
+                if len(setPdf) == 1:
+                    outputBox.insert(tk.END, VoucherFileUtil.extractXMLFromPDF(strPdf))
+                else:
+                    with open(strDestFile, "w") as f:
+                        f.write(strXml)
+
+
 
 
 
@@ -215,12 +226,13 @@ btStart.grid(row=rowIndex, column=1, padx=10)
 #### Output box
 outputBox = tk.Text(root, width=70, height=30, fg="black", bg="white")
 outputBox.grid(row=rowIndex, column=2, padx=6, pady=6)
+outputBox.config(state=tk.DISABLED)
 
 #### Select files button
 def on_select_files():
     arrTypes = []
     match selectedIndex:
-        case 0 | 7:
+        case 0:
             arrTypes = [("ofd,pdf", "*.ofd *.pdf")]
         case 1 | 2 | 6:
             arrTypes = [("pdf", "*.pdf")]
@@ -256,7 +268,9 @@ btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
 #### Select output folder button
 def on_select_output_folder():
     ret = select_folder(strHint="Select a folder to store output files:")
+    outputBox.config(state=tk.NORMAL)
     outputBox.insert(tk.END, ret+"/\n")
+    outputBox.config(state=tk.DISABLED)
 
 btSelectOutputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_output_folder)
 btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pady=0)
