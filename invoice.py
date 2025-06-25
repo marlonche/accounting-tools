@@ -74,33 +74,29 @@ root.geometry("%dx%d+0+0" % (w, h))
 
 # Add widgets here (e.g., labels, buttons)
 rowIndex = 0
-tk.Label(root, text="Choose an operation:", width=20, fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=0, padx=10, pady=(10, 0))
+tk.Label(root, text="Choose an operation:", fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=0, columnspan=3, pady=(10, 0))
 
 #### Operations dropdown
 options = [
-    "从OFD中将XBRL文件提取到指定位置",
-    "从PDF中将XBRL文件提取到指定位置",
+    "从OFD或PDF中将XBRL文件提取到指定位置",
     "从PDF中将附件提取到指定位置",
     "从PDF中提取XML",
     "JSON转XBRL",
     "XBRL转JSON",
     "XML转JSON",
     "从PDF中提取XML报文",
-    "从OFD中提取出XBRL文件",
-    "从PDF中提取出XBRL文件",
+    "从OFD或PDF中提取出XBRL文本",
 ]
 
 descriptions = [
-    "",
-    "",
-    "",
-    "适用于国库集中支付电子凭证",
-    "",
-    "",
-    "",
-    "仅适用于中央财政电子票据",
-    "",
-    "",
+    "可选择多个PDF或OFD文件，或目录(目录里面的所有PDF或OFD都将被处理)，还可使用通配符; Output里面可以指定输出目录(如不指定则输出到源文件所在目录)",
+    "可选择多个PDF文件，或目录(目录里面的所有PDF都将被处理)，还可使用通配符; Output里面可以指定输出目录(如不指定则输出到源文件所在目录)",
+    "适用于国库集中支付电子凭证, Input里面指定一个PDF文件名，Output输出XML文本",
+    "Input里面如果是JSON文本，则输出XBRL文本到Output，Input里面如果是.json文件或目录，则输出.xbrl文件(Output没有指定输出目录就输出到源文件所在目录)",
+    "Input里面如果是XBRL文本，则输出JSON文本到Output，Input里面如果是.xbrl文件或目录，则输出.json文件(Output没有指定输出目录就输出到源文件所在目录)",
+    "Input里面如果是XML文本，则输出JSON文本到Output，Input里面如果是.xml文件或目录，则输出.json文件(Output没有指定输出目录就输出到源文件所在目录)",
+    "仅适用于中央财政电子票据, Input里面指定一个PDF文件名，Output输出XML文本",
+    "Input里面指定一个OFD或PDF文件名，Output输出XBRL文本",
 ]
 
 selectedIndex = 0
@@ -116,24 +112,24 @@ def on_option_selected(selectedValue):
 
 # Create the OptionMenu
 dropdown = tk.OptionMenu(root, selectedOption, *options, command=on_option_selected)
-dropdown.config(width=30)
+#dropdown.config(width=35)
 rowIndex += 1
-dropdown.grid(row=rowIndex, column=0, padx=10, pady=(10, 10))
+dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 
 #### Operation description:
-opDescription = tk.Label(root, text=descriptions[0], width=20, fg="#BFB5A7", bg="#2D3639")
+opDescription = tk.Label(root, text=descriptions[0], fg="#BFB5A7", bg="#2D3639")
 rowIndex += 1
-opDescription.grid(row=rowIndex, column=0, padx=5, pady=(0, 50))
+opDescription.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 40))
 
 #### Input Output description:
 rowIndex += 1
-tk.Label(root, text="Input", width=20, fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=0, padx=5, pady=(0, 0))
-tk.Label(root, text="Output", width=20, fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=2, padx=5, pady=(0, 0))
+tk.Label(root, text="Input", fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=0)
+tk.Label(root, text="Output", fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=2)
 
 #### Input files
 inputFiles = tk.Text(root, width=70, height=30, fg="black", bg="white")
 rowIndex += 1
-inputFiles.grid(row=rowIndex, column=0, padx=10, pady=10)
+inputFiles.grid(row=rowIndex, column=0, padx=6, pady=6)
 
 #### Start button
 def on_start():
@@ -141,11 +137,11 @@ def on_start():
 
 
 btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "gray", command=on_start)
-btStart.grid(row=rowIndex, column=1, padx=10, pady=10)
+btStart.grid(row=rowIndex, column=1, padx=10)
 
 #### Output files
 outputFiles = tk.Text(root, width=70, height=30, fg="black", bg="white")
-outputFiles.grid(row=rowIndex, column=2, padx=10, pady=10)
+outputFiles.grid(row=rowIndex, column=2, padx=6, pady=6)
 
 #### Select files button
 def on_select_files():
@@ -175,15 +171,14 @@ def on_select_folder():
    print() 
 
 btSelectFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_folder)
-btSelectFolder.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
+btSelectFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
 
 #### Clear Text button
 def on_clear_text():
     inputFiles.delete("1.0", tk.END)
 
 btClearText = tk.Button(root, text="Clear", width=12, height=2, fg="yellow", bg= "gray", command=on_clear_text)
-btClearText.grid(row=rowIndex, column=0, padx=(10), pady=0)
-
+btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
 
 # Start the main event loop
 root.mainloop()
