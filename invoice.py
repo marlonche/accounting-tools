@@ -11,6 +11,49 @@ from tkinter import filedialog
 from pathlib import Path
 
 ######################################
+#invoice type
+mapInvoiceType = {
+    "增值税电子普通发票_开具方": "inv_ord_issuer",
+    "增值税电子普通发票_接收方": "inv_ord_receiver",
+    "增值税电子专用发票_开具方": "inv_spcl_issuer",
+    "增值税电子专用发票_接收方": "inv_spcl_receiver",
+    "电子非税收入一般缴款书开_具方": "ntrev_gpm_issuer",
+    "电子非税收入一般缴款书_接收方": "ntrev_gpm_receiver",
+    "电子发票_铁路电子客票_开具方": "rai_issuer",
+    "电子发票_铁路电子客票_接收方": "rai_receiver",
+    "电子发票_航空运输电子客票行程单_开具方": "atr_issuer",
+    "电子发票_航空运输电子客票行程单_接收方": "atr_receiver",
+    "银行电子回单_开具方": "bker_issuer",
+    "银行电子回单_接收方": "bker_receiver",
+    "银行电子对账单": "bkrs",
+    "全面数字化的电子发票-普通发票_接收方": "einv_ord_receiver",
+    "全面数字化的电子发票-增值税专用发票_接收方": "einv_spcl_receiver",
+    "财政电子票据": "efi",
+    "国库集中支付电子凭证": "ctp",
+}
+
+strInvoiceType = '''
+增值税电子普通发票_开具方
+增值税电子普通发票_接收方
+增值税电子专用发票_开具方
+增值税电子专用发票_接收方
+电子非税收入一般缴款书开_具方
+电子非税收入一般缴款书_接收方
+电子发票_铁路电子客票_开具方
+电子发票_铁路电子客票_接收方
+电子发票_航空运输电子客票行程单_开具方
+电子发票_航空运输电子客票行程单_接收方
+银行电子回单_开具方
+银行电子回单_接收方
+银行电子对账单
+全面数字化的电子发票-普通发票_接收方
+全面数字化的电子发票-增值税专用发票_接收方
+财政电子票据
+国库集中支付电子凭证
+'''
+
+
+######################################
 #import jar
 # Dynamically gathering JARs from a directory
 jars_dir = os.getcwd() + '/jars'
@@ -94,23 +137,23 @@ tk.Label(root, text="Choose an operation:", fg="#BFB5A7", bg="#2D3639").grid(row
 
 #### Operations dropdown
 options = [
-    "从OFD或PDF中将XBRL文件提取到指定位置",
-    "从PDF中将附件提取到指定位置",
-    "从PDF中提取XML",
+    "从OFD或PDF中提取XBRL",
+    "从PDF中提取附件",
+    "从PDF中提取XML(国库集中支付电子凭证)",
+    "从PDF中提取XML(中央财政电子票据)",
     "JSON转XBRL",
     "XBRL转JSON",
     "XML转JSON",
-    "从PDF中提取XML报文",
 ]
 
 descriptions = [
-    "可选择多个PDF或OFD文件，或目录(目录里面的所有PDF或OFD都将被处理)，还可使用通配符; Output里面可以指定输出目录(如不指定则输出到源文件所在目录)",
-    "可选择多个PDF文件，或目录(目录里面的所有PDF都将被处理)，还可使用通配符; Output里面可以指定输出目录(如不指定则输出到源文件所在目录)",
-    "适用于国库集中支付电子凭证, Input里面指定一个PDF文件名，Output输出XML文本",
-    "Input里面如果是JSON文本，则输出XBRL文本到Output，Input里面如果是.json文件或目录，则输出.xbrl文件(Output没有指定输出目录就输出到源文件所在目录)",
-    "Input里面如果是XBRL文本，则输出JSON文本到Output，Input里面如果是.xbrl文件或目录，则输出.json文件(Output没有指定输出目录就输出到源文件所在目录)",
-    "Input里面如果是XML文本，则输出JSON文本到Output，Input里面如果是.xml文件或目录，则输出.json文件(Output没有指定输出目录就输出到源文件所在目录)",
-    "仅适用于中央财政电子票据, Input里面指定一个PDF文件名，Output输出XML文本",
+    "Input包含多个PDF或OFD文件,或目录(目录包括子目录里面的所有PDF或OFD都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录); Input仅包含一个文件名时, Output输出XBRL文本",
+    "Input可包含多个PDF文件,或目录(目录包括子目录里面的所有PDF都将被处理); Output可指定输出目录(如不指定则输出到源文件所在目录)",
+    "适用于国库集中支付电子凭证; Input仅包含一个PDF文件名时, Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
+    "仅适用于中央财政电子票据; Input仅包含一个PDF文件名时,Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
+    "Input仅包含一个JSON文件名时,Output输出XBRL文本; Input包含多个JSON文件或目录(目录包括子目录里面的所有JSON文件都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录). JSON文件所在文件夹要用所属票据类型名称命名(程序启动时Output文本框列出了所有票据类型名称)",
+    "Input仅包含一个XBRL文件名时,Output输出JSON文本; Input包含多个XBRL文件或目录(目录包括子目录里面的所有XBRL文件都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录). XBRL文件所在文件夹要用所属票据类型名称命名(程序启动时Output文本框列出了所有票据类型名称)",
+    "Input包含XML文本或一个XML文件名时, Output输出JSON文本; Input包含多个XML文件或目录(目录包括子目录里面的所有XML文件都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
 ]
 
 selectedIndex = 0
@@ -131,9 +174,9 @@ rowIndex += 1
 dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 
 #### Operation description:
-opDescription = tk.Label(root, text=descriptions[0], fg="#BFB5A7", bg="#2D3639")
+opDescription = tk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, fg="#BFB5A7", bg="#2D3639")
 rowIndex += 1
-opDescription.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 40))
+opDescription.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 20))
 
 #### Input Output description:
 rowIndex += 1
@@ -146,17 +189,6 @@ rowIndex += 1
 inputBox.grid(row=rowIndex, column=0, padx=6, pady=6)
 
 
-'''
-options = [
-    "从OFD或PDF中将XBRL文件提取到指定位置",
-    "从PDF中将附件提取到指定位置",
-    "从PDF中提取XML",
-    "JSON转XBRL",
-    "XBRL转JSON",
-    "XML转JSON",
-    "从PDF中提取XML报文",
-]
-'''
 #### Start button
 mapInputFiles = {}
 def on_start():
@@ -183,25 +215,46 @@ def on_start():
         if path.exists() and path.is_dir():
             strDestDir = lines[0]
     match selectedIndex:
+        #"从OFD或PDF中提取XBRL"
         case 0:
-            for strOfd in mapInputFiles["ofd"]:
+            setOfd = mapInputFiles["ofd"]
+            for strOfd in setOfd:
                 path = Path(strOfd)
                 strDestFile = str(path.withsuffix("xbrl"))
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
                 VoucherFileUtil.extractXBRLFromOFD(strOfd, strDestFile)
-            for strPdf in mapInputFiles["pdf"]:
+                if len(setOfd) == 1:
+                    strXbrl = ""
+                    with open(strDestFile, 'r', encoding='utf-8') as f:
+                        strXbrl = f.read()
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strXbrl)
+                    outputBox.config(state=tk.DISABLED)
+            setPdf = mapInputFiles["pdf"]
+            for strPdf in setPdf:
                 path = Path(strPdf)
                 strDestFile = str(path.withsuffix("xbrl"))
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
                 VoucherFileUtil.extractXBRLFromPDF(strPdf, strDestFile)
+                if len(setPdf) == 1:
+                    strXbrl = ""
+                    with open(strDestFile, 'r', encoding='utf-8') as f:
+                        strXbrl = f.read()
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strXbrl)
+                    outputBox.config(state=tk.DISABLED)
+        #"从PDF中提取附件"
         case 1:
             for strPdf in mapInputFiles["pdf"]:
                 path = Path(strPdf)
                 if not strDestDir:
                     strDestDir = str(path.parent)
                 VoucherFileUtil.extractAttachFromPDF(strPdf, strDestDir) 
+        #"从PDF中提取XML(国库集中支付电子凭证)"
         case 2:
             setPdf = mapInputFiles["pdf"]
             for strPdf in setPdf:
@@ -211,11 +264,71 @@ def on_start():
                     strDestFile = str((Path(strDestDir) / path.name).withsuffix("xml"))
                 strXml = VoucherFileUtil.extractXMLFromPDF(strPdf)
                 if len(setPdf) == 1:
-                    outputBox.insert(tk.END, VoucherFileUtil.extractXMLFromPDF(strPdf))
-                else:
-                    with open(strDestFile, "w") as f:
-                        f.write(strXml)
-
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strXml)
+                    outputBox.config(state=tk.DISABLED)
+                with open(strDestFile, "w") as f:
+                    f.write(strXml)
+        #"从PDF中提取XML(中央财政电子票据)"
+        case 3:
+            setPdf = mapInputFiles["pdf"]
+            for strPdf in setPdf:
+                path = Path(strPdf)
+                strDestFile = str(path.withsuffix("xml"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xml"))
+                strXml = VoucherFileUtil.extractXMLFromCEBPDF(strPdf)
+                if len(setPdf) == 1:
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strXml)
+                    outputBox.config(state=tk.DISABLED)
+                with open(strDestFile, "w") as f:
+                    f.write(strXml)
+        #"JSON转XBRL"
+        case 4:
+            setJson = mapInputFiles["json"]
+            for file in setJson:
+                path = Path(file)
+                strDestFile = str(path.withsuffix("xbrl"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
+                strJson = ""
+                configID = mapInvoiceType[path.parent.name]
+                with open(file, 'r', encoding='utf-8') as f:
+                    strJson = f.read()
+                strXbrl = VoucherFileUtil.json2Xbrl(strJson, configID)
+                if len(setJson) == 1:
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strXbrl)
+                    outputBox.config(state=tk.DISABLED)
+                with open(strDestFile, "w") as f:
+                    f.write(strXbrl)
+            
+        #"XBRL转JSON"
+        case 5:
+            setXbrl = mapInputFiles["xbrl"]
+            for file in setXbrl:
+                path = Path(file)
+                strDestFile = str(path.withsuffix("json"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("json"))
+                strXbrl = ""
+                configID = mapInvoiceType[path.parent.name]
+                with open(file, 'r', encoding='utf-8') as f:
+                    strXbrl = f.read()
+                strJson = VoucherFileUtil.xbrl2Json(strXbrl, configID)
+                if len(setXbrl) == 1:
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strJson)
+                    outputBox.config(state=tk.DISABLED)
+                with open(strDestFile, "w") as f:
+                    f.write(strJson)
+         
+         #"XML转JSON"
 
 
 
@@ -226,6 +339,7 @@ btStart.grid(row=rowIndex, column=1, padx=10)
 #### Output box
 outputBox = tk.Text(root, width=70, height=30, fg="black", bg="white")
 outputBox.grid(row=rowIndex, column=2, padx=6, pady=6)
+outputBox.insert(tk.END, strInvoiceType)
 outputBox.config(state=tk.DISABLED)
 
 #### Select files button
@@ -234,13 +348,13 @@ def on_select_files():
     match selectedIndex:
         case 0:
             arrTypes = [("ofd,pdf", "*.ofd *.pdf")]
-        case 1 | 2 | 6:
+        case 1 | 2 | 3:
             arrTypes = [("pdf", "*.pdf")]
-        case 3:
-            arrTypes = [("json", "*.json")]
         case 4:
-            arrTypes = [("xbrl", "*.xbrl")]
+            arrTypes = [("json", "*.json")]
         case 5:
+            arrTypes = [("xbrl", "*.xbrl")]
+        case 6:
             arrTypes = [("xml", "*.xml")]
     files = select_multiple_files(arrTypes)
     for file in files:
@@ -269,6 +383,7 @@ btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
 def on_select_output_folder():
     ret = select_folder(strHint="Select a folder to store output files:")
     outputBox.config(state=tk.NORMAL)
+    outputBox.delete("1.0", tk.END)
     outputBox.insert(tk.END, ret+"/\n")
     outputBox.config(state=tk.DISABLED)
 
