@@ -8,7 +8,7 @@ from jpype.types import *
 
 import tkinter as tk
 from tkinter import filedialog
-
+from pathlib import Path
 
 ######################################
 #import jar
@@ -23,6 +23,22 @@ jpype.startJVM(jpype.getDefaultJVMPath(), '-ea', f'-Djava.class.path={CLASSPATH}
 # Import Java classes from your JAR
 from api import *
 #java_obj = VoucherFileUtil()
+
+
+######################################
+#Path tools
+def get_files_in_dir_with_ext(directory, extension):
+    base_path = Path(directory)
+    return list(base_path.rglob(f'*.{extension.lstrip(".")}'))
+
+def get_files_in_dir(directory):
+    listFiles = []
+    path_obj = Path(directory)
+    for file_path in path_obj.rglob('*'):
+        if file_path.is_file():
+            listFiles.append(file_path)
+    return listFiles
+
 
 ######################################
 #GUI
@@ -131,9 +147,66 @@ inputBox = tk.Text(root, width=70, height=30, fg="black", bg="white")
 rowIndex += 1
 inputBox.grid(row=rowIndex, column=0, padx=6, pady=6)
 
+
+'''
+options = [
+    "从OFD或PDF中将XBRL文件提取到指定位置",
+    "从PDF中将附件提取到指定位置",
+    "从PDF中提取XML",
+    "JSON转XBRL",
+    "XBRL转JSON",
+    "XML转JSON",
+    "从PDF中提取XML报文",
+    "从OFD或PDF中提取出XBRL文本",
+]
+'''
 #### Start button
+mapInputFiles = {}
 def on_start():
-    print("button clicked")
+    global mapInputFiles
+    lines = inputBox.get("1.0", tk.END).splitlines()
+    for line in lines:
+        path = Path(line)
+        if path.is_dir():
+            listFiles = get_files_in_dir(line)
+            for file in listFiles:
+                ext = Path(file).suffix.removeprefix(".")
+                if ext not in mapInputFiles:
+                    mapInputFiles[ext] = set()
+                mapInputFiles[ext].add(file)
+        elif path.is_file():
+            ext = path.suffix.removeprefix(".")
+            if ext not in mapInputFiles:
+                mapInputFiles[ext] = set()
+            mapInputFiles[ext].add(line)
+    strDestDir = ""
+    lines = outputBox.get("1.0", tk.END).splitlines()
+    if len(lines) == 1 and Path(lines[0]).is_dir():
+        strDestDir = lines[0]
+        Path(strDestDir).mkdir(parents=True, exist_ok=True)
+    match selectedIndex:
+        case 0:
+            for strOfd in mapInputFiles["ofd"]:
+                path = Path(strOfd)
+                strDestFile = str(path.withsuffix("xbrl"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
+                VoucherFileUtil.extractXBRLFromOFD(strOfd, strDestFile)
+            for strPdf in mapInputFiles["pdf"]:
+                path = Path(strPdf)
+                strDestFile = str(path.withsuffix("xbrl"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
+                VoucherFileUtil.extractXBRLFromPDF(strPdf, strDestFile)
+        case 1:
+            for strPdf in mapInputFiles["pdf"]:
+                path = Path(strPdf)
+                if not strDestDir:
+                    strDestDir = str(path.parent)
+                VoucherFileUtil.extractAttachFromPDF(strPdf, strDestDir) 
+            
+            #String extractXMLFromPDF(String pdfFilePath)
+
 
 
 btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "gray", command=on_start)
