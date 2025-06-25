@@ -126,10 +126,10 @@ rowIndex += 1
 tk.Label(root, text="Input", fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=0)
 tk.Label(root, text="Output", fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, column=2)
 
-#### Input files
-inputFiles = tk.Text(root, width=70, height=30, fg="black", bg="white")
+#### Input box
+inputBox = tk.Text(root, width=70, height=30, fg="black", bg="white")
 rowIndex += 1
-inputFiles.grid(row=rowIndex, column=0, padx=6, pady=6)
+inputBox.grid(row=rowIndex, column=0, padx=6, pady=6)
 
 #### Start button
 def on_start():
@@ -139,46 +139,55 @@ def on_start():
 btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "gray", command=on_start)
 btStart.grid(row=rowIndex, column=1, padx=10)
 
-#### Output files
-outputFiles = tk.Text(root, width=70, height=30, fg="black", bg="white")
-outputFiles.grid(row=rowIndex, column=2, padx=6, pady=6)
+#### Output box
+outputBox = tk.Text(root, width=70, height=30, fg="black", bg="white")
+outputBox.grid(row=rowIndex, column=2, padx=6, pady=6)
 
 #### Select files button
 def on_select_files():
-    global inputFiles
     arrTypes = []
     match selectedIndex:
-        case 0 | 8:
-            arrTypes = [("ofd", "*.ofd")]
-        case 1 | 2 | 3 | 7 | 9:
+        case 0 | 7:
+            arrTypes = [("ofd,pdf", "*.ofd *.pdf")]
+        case 1 | 2 | 6:
             arrTypes = [("pdf", "*.pdf")]
-        case 4:
+        case 3:
             arrTypes = [("json", "*.json")]
-        case 5:
+        case 4:
             arrTypes = [("xbrl", "*.xbrl")]
-        case 6:
+        case 5:
             arrTypes = [("xml", "*.xml")]
     files = select_multiple_files(arrTypes)
     for file in files:
-        inputFiles.insert(tk.END, file+"\n")
+        inputBox.insert(tk.END, file+"\n")
 
 btSelectFile = tk.Button(root, text="Select Files...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_files)
 rowIndex += 1
 btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=0)
 
-#### Select folder button
-def on_select_folder():
-   print() 
+#### Select input folder button
+def on_select_input_folder():
+    ret = select_folder(strHint="Select a folder containing input files:")
+    inputBox.insert(tk.END, ret+"/\n")
 
-btSelectFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_folder)
-btSelectFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
+btSelectInputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_input_folder)
+btSelectInputFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
 
-#### Clear Text button
+#### Clear text box button
 def on_clear_text():
-    inputFiles.delete("1.0", tk.END)
+    inputBox.delete("1.0", tk.END)
 
 btClearText = tk.Button(root, text="Clear", width=12, height=2, fg="yellow", bg= "gray", command=on_clear_text)
 btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
+
+#### Select output folder button
+def on_select_output_folder():
+    ret = select_folder(strHint="Select a folder to store output files:")
+    outputBox.insert(tk.END, ret+"/\n")
+
+btSelectOutputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_output_folder)
+btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pady=0)
+
 
 # Start the main event loop
 root.mainloop()
