@@ -160,13 +160,14 @@ def on_option_selected(selectedValue):
     opDescription.config(text=descriptions[selectedIndex])
 
 # Create the OptionMenu
-dropdown = tk.OptionMenu(root, selectedOption, *options, command=on_option_selected)
+dropdown = ttk.OptionMenu(root, selectedOption, *options, command=on_option_selected)
 #dropdown.config(width=35)
 rowIndex += 1
 dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 
 #### Operation description:
-opDescription = tk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, fg="#BFB5A7", bg="#2D3639")
+#opDescription = tk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, fg="#BFB5A7", bg="#2D3639")
+opDescription = ttk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, foreground="#BFB5A7", background="#2D3639")
 rowIndex += 1
 opDescription.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 20))
 
@@ -383,7 +384,8 @@ def on_start():
     rootBar.destroy()
 
 
-btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "gray", command=on_start)
+#btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "#535151", command=on_start)
+btStart = ttk.Button(root, text="Start", command=on_start)
 btStart.grid(row=rowIndex, column=1, padx=10)
 
 #### Output box
@@ -412,7 +414,8 @@ def on_select_files():
         inputBox.insert(tk.END, file+"\n")
     inputBox.config(state=tk.DISABLED)
 
-btSelectFile = tk.Button(root, text="Select Files...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_files)
+#btSelectFile = tk.Button(root, text="Select Files...", width=12, height=2, fg="yellow", bg= "#535151", command=on_select_files)
+btSelectFile = ttk.Button(root, text="Select Files...", command=on_select_files)
 rowIndex += 1
 btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=0)
 
@@ -425,7 +428,8 @@ def on_select_input_folder():
     inputBox.insert(tk.END, ret+"/\n")
     inputBox.config(state=tk.DISABLED)
 
-btSelectInputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_input_folder)
+#btSelectInputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "#535151", command=on_select_input_folder)
+btSelectInputFolder = ttk.Button(root, text="Select Folder...", command=on_select_input_folder)
 btSelectInputFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
 
 #### Clear text box button
@@ -434,7 +438,8 @@ def on_clear_text():
     inputBox.delete("1.0", tk.END)
     inputBox.config(state=tk.DISABLED)
 
-btClearText = tk.Button(root, text="Clear", width=12, height=2, fg="yellow", bg= "gray", command=on_clear_text)
+#btClearText = tk.Button(root, text="Clear", width=12, height=2, fg="yellow", bg= "#535151", command=on_clear_text)
+btClearText = ttk.Button(root, text="Clear", command=on_clear_text)
 btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
 
 #### Select output folder button
@@ -447,7 +452,8 @@ def on_select_output_folder():
     outputBox.insert(tk.END, ret+"/\n")
     outputBox.config(state=tk.DISABLED)
 
-btSelectOutputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_output_folder)
+#btSelectOutputFolder = ttk.Button(root, text="Select Folder...", width=12, height=2, fg="#613302", bg="#535151", activebackground="#050505", command=on_select_output_folder)
+btSelectOutputFolder = ttk.Button(root, text="Select Folder...", command=on_select_output_folder)
 btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pady=0)
 
 
