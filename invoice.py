@@ -187,6 +187,7 @@ mapInputFiles = defaultdict(lambda: set())
 def on_start():
     global mapInputFiles
     btStart.config(state=tk.DISABLED)
+
     #progress bar
     rootBar = tk.Toplevel(root)
     rootBar.transient(root)
@@ -206,9 +207,8 @@ def on_start():
         rootBar.update_idletasks()
 
     lines = inputBox.get("1.0", tk.END).splitlines()
+    lines = [line for line in lines if line.strip()]
     for line in lines:
-        if not line:
-            continue
         path = Path(line)
         #print(f"=====================line:{line}, path:{path}")
         if path.is_dir():
@@ -225,6 +225,7 @@ def on_start():
             mapInputFiles[ext].add(line)
     strDestDir = ""
     lines = outputBox.get("1.0", tk.END).splitlines()
+    lines = [line for line in lines if line.strip()]
     if len(lines) == 1:
         path = Path(lines[0])
         if path.exists() and path.is_dir():
