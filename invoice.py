@@ -9,6 +9,7 @@ from jpype.types import *
 import tkinter as tk
 from tkinter import filedialog
 from pathlib import Path
+from collections import defaultdict
 
 ######################################
 #invoice type
@@ -187,15 +188,20 @@ tk.Label(root, text="Output", fg="#BFB5A7", bg="#2D3639").grid(row=rowIndex, col
 inputBox = tk.Text(root, width=70, height=30, fg="black", bg="white")
 rowIndex += 1
 inputBox.grid(row=rowIndex, column=0, padx=6, pady=6)
+inputBox.config(state=tk.DISABLED)
 
 
 #### Start button
-mapInputFiles = {}
+mapInputFiles = defaultdict(lambda: set())
 def on_start():
     global mapInputFiles
+    btStart.config(state=tk.DISABLED)
     lines = inputBox.get("1.0", tk.END).splitlines()
     for line in lines:
+        if not line:
+            continue
         path = Path(line)
+        #print(f"=====================line:{line}, path:{path}")
         if path.is_dir():
             listFiles = get_files_in_dir(line)
             for file in listFiles:
@@ -218,12 +224,12 @@ def on_start():
         #"从OFD或PDF中提取XBRL"
         case 0:
             setOfd = mapInputFiles["ofd"]
-            for strOfd in setOfd:
-                path = Path(strOfd)
-                strDestFile = str(path.withsuffix("xbrl"))
+            for file in setOfd:
+                path = Path(file)
+                strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
-                VoucherFileUtil.extractXBRLFromOFD(strOfd, strDestFile)
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
+                VoucherFileUtil.extractXBRLFromOFD(file, strDestFile)
                 if len(setOfd) == 1:
                     strXbrl = ""
                     with open(strDestFile, 'r', encoding='utf-8') as f:
@@ -233,12 +239,12 @@ def on_start():
                     outputBox.insert(tk.END, strXbrl)
                     outputBox.config(state=tk.DISABLED)
             setPdf = mapInputFiles["pdf"]
-            for strPdf in setPdf:
-                path = Path(strPdf)
-                strDestFile = str(path.withsuffix("xbrl"))
+            for file in setPdf:
+                path = Path(file)
+                strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
-                VoucherFileUtil.extractXBRLFromPDF(strPdf, strDestFile)
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
+                VoucherFileUtil.extractXBRLFromPDF(file, strDestFile)
                 if len(setPdf) == 1:
                     strXbrl = ""
                     with open(strDestFile, 'r', encoding='utf-8') as f:
@@ -249,20 +255,20 @@ def on_start():
                     outputBox.config(state=tk.DISABLED)
         #"从PDF中提取附件"
         case 1:
-            for strPdf in mapInputFiles["pdf"]:
-                path = Path(strPdf)
+            for file in mapInputFiles["pdf"]:
+                path = Path(file)
                 if not strDestDir:
                     strDestDir = str(path.parent)
-                VoucherFileUtil.extractAttachFromPDF(strPdf, strDestDir) 
+                VoucherFileUtil.extractAttachFromPDF(file, strDestDir) 
         #"从PDF中提取XML(国库集中支付电子凭证)"
         case 2:
             setPdf = mapInputFiles["pdf"]
-            for strPdf in setPdf:
-                path = Path(strPdf)
-                strDestFile = str(path.withsuffix("xml"))
+            for file in setPdf:
+                path = Path(file)
+                strDestFile = str(path.with_suffix(".xml"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xml"))
-                strXml = VoucherFileUtil.extractXMLFromPDF(strPdf)
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xml"))
+                strXml = str(VoucherFileUtil.extractXMLFromPDF(file))
                 if len(setPdf) == 1:
                     outputBox.config(state=tk.NORMAL)
                     outputBox.delete("1.0", tk.END)
@@ -273,12 +279,12 @@ def on_start():
         #"从PDF中提取XML(中央财政电子票据)"
         case 3:
             setPdf = mapInputFiles["pdf"]
-            for strPdf in setPdf:
-                path = Path(strPdf)
-                strDestFile = str(path.withsuffix("xml"))
+            for file in setPdf:
+                path = Path(file)
+                strDestFile = str(path.with_suffix(".xml"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xml"))
-                strXml = VoucherFileUtil.extractXMLFromCEBPDF(strPdf)
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xml"))
+                strXml = str(VoucherFileUtil.extractXMLFromCEBPDF(file))
                 if len(setPdf) == 1:
                     outputBox.config(state=tk.NORMAL)
                     outputBox.delete("1.0", tk.END)
@@ -291,14 +297,14 @@ def on_start():
             setJson = mapInputFiles["json"]
             for file in setJson:
                 path = Path(file)
-                strDestFile = str(path.withsuffix("xbrl"))
+                strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("xbrl"))
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
                 strJson = ""
                 configID = mapInvoiceType[path.parent.name]
                 with open(file, 'r', encoding='utf-8') as f:
                     strJson = f.read()
-                strXbrl = VoucherFileUtil.json2Xbrl(strJson, configID)
+                strXbrl = str(VoucherFileUtil.json2Xbrl(strJson, configID))
                 if len(setJson) == 1:
                     outputBox.config(state=tk.NORMAL)
                     outputBox.delete("1.0", tk.END)
@@ -312,14 +318,14 @@ def on_start():
             setXbrl = mapInputFiles["xbrl"]
             for file in setXbrl:
                 path = Path(file)
-                strDestFile = str(path.withsuffix("json"))
+                strDestFile = str(path.with_suffix(".json"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).withsuffix("json"))
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".json"))
                 strXbrl = ""
                 configID = mapInvoiceType[path.parent.name]
                 with open(file, 'r', encoding='utf-8') as f:
                     strXbrl = f.read()
-                strJson = VoucherFileUtil.xbrl2Json(strXbrl, configID)
+                strJson = str(VoucherFileUtil.xbrl2Json(strXbrl, configID).toJSONString())
                 if len(setXbrl) == 1:
                     outputBox.config(state=tk.NORMAL)
                     outputBox.delete("1.0", tk.END)
@@ -328,9 +334,26 @@ def on_start():
                 with open(strDestFile, "w") as f:
                     f.write(strJson)
          
-         #"XML转JSON"
-
-
+        #"XML转JSON"
+        case 6:
+            setXml = mapInputFiles["xml"]
+            for file in setXml:
+                path = Path(file)
+                strDestFile = str(path.with_suffix(".json"))
+                if strDestDir:
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".json"))
+                strXml = ""
+                with open(file, 'r', encoding='utf-8') as f:
+                    strXml = f.read()
+                strJson = str(VoucherFileUtil.xml2Json(strXml).toJSONString())
+                if len(setXml) == 1:
+                    outputBox.config(state=tk.NORMAL)
+                    outputBox.delete("1.0", tk.END)
+                    outputBox.insert(tk.END, strJson)
+                    outputBox.config(state=tk.DISABLED)
+                with open(strDestFile, "w") as f:
+                    f.write(strJson)
+    btStart.config(state=tk.NORMAL)
 
 
 btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "gray", command=on_start)
@@ -357,8 +380,10 @@ def on_select_files():
         case 6:
             arrTypes = [("xml", "*.xml")]
     files = select_multiple_files(arrTypes)
+    inputBox.config(state=tk.NORMAL)
     for file in files:
         inputBox.insert(tk.END, file+"\n")
+    inputBox.config(state=tk.DISABLED)
 
 btSelectFile = tk.Button(root, text="Select Files...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_files)
 rowIndex += 1
@@ -367,14 +392,18 @@ btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=0)
 #### Select input folder button
 def on_select_input_folder():
     ret = select_folder(strHint="Select a folder containing input files:")
+    inputBox.config(state=tk.NORMAL)
     inputBox.insert(tk.END, ret+"/\n")
+    inputBox.config(state=tk.DISABLED)
 
 btSelectInputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "gray", command=on_select_input_folder)
 btSelectInputFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
 
 #### Clear text box button
 def on_clear_text():
+    inputBox.config(state=tk.NORMAL)
     inputBox.delete("1.0", tk.END)
+    inputBox.config(state=tk.DISABLED)
 
 btClearText = tk.Button(root, text="Clear", width=12, height=2, fg="yellow", bg= "gray", command=on_clear_text)
 btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
