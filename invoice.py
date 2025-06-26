@@ -2,11 +2,14 @@
 import os
 import inspect
 import sys
+import time
+import math
 import jpype
 import jpype.imports
 from jpype.types import *
 
 import tkinter as tk
+from tkinter import ttk
 from tkinter import filedialog
 from pathlib import Path
 from collections import defaultdict
@@ -87,38 +90,26 @@ def get_files_in_dir(directory):
 ######################################
 #GUI
 def select_single_file(arrTypes):
-    root = tk.Tk()
-    root.withdraw()  # Hide the main window
     file_path = filedialog.askopenfilename(title="Select a File:", filetypes=arrTypes)
-    root.destroy()
     return file_path
 
 
 def select_multiple_files(arrTypes):
-    root = tk.Tk()
-    root.withdraw()
     file_paths = filedialog.askopenfilenames(title="Select Multiple Files:", filetypes=arrTypes)
-    root.destroy()
     return file_paths
 
 
 def save_as(arrTypes, strDefaultExt, strInitName=""):
-    root = tk.Tk()
-    root.withdraw()
     file_path = filedialog.asksaveasfilename(title="Save As:", filetypes=arrTypes, defaultextension=strDefaultExt, initialfile=strInitName)
-    root.destroy()
     return file_path
 
 
-def select_folder(strHint):
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askdirectory(title=strHint)
-    root.destroy()
+def select_folder(strTitle):
+    file_path = filedialog.askdirectory(title=strTitle)
     return file_path
 
 
-#ret = select_folder(strHint="Select a Folder to Save Output Files:")
+#ret = select_folder(strTitle="Select a Folder to Save Output Files:")
 #ret = save_as(arrTypes=[("jar", "*.jar"), ("zip", "*.zip")], strDefaultExt=".pdf", strInitName="aaa.txt") 
 #print(ret)
 
@@ -196,6 +187,24 @@ mapInputFiles = defaultdict(lambda: set())
 def on_start():
     global mapInputFiles
     btStart.config(state=tk.DISABLED)
+    #progress bar
+    rootBar = tk.Toplevel(root)
+    rootBar.transient(root)
+    rootBar.grab_set()
+    rootBar.title("Processing...")
+    width = math.floor(rootBar.winfo_screenwidth() * 0.7)
+    height = math.floor(rootBar.winfo_screenheight() * 0.1)
+    x = (rootBar.winfo_screenwidth() // 2) - (width // 2)
+    y = (rootBar.winfo_screenheight() // 2) - (height // 2)
+    rootBar.geometry(f'{width}x{height}+{x}+{y}')
+    progress = ttk.Progressbar(rootBar, orient=tk.HORIZONTAL, mode='determinate')
+    progress.pack(fill=tk.X, expand=True)
+    progress["value"] = 0  
+
+    def updateProgress():
+        progress["value"] += 1
+        rootBar.update_idletasks()
+
     lines = inputBox.get("1.0", tk.END).splitlines()
     for line in lines:
         if not line:
@@ -224,7 +233,10 @@ def on_start():
         #"从OFD或PDF中提取XBRL"
         case 0:
             setOfd = mapInputFiles["ofd"]
+            setPdf = mapInputFiles["pdf"]
+            progress["maximum"] = len(setOfd) + len(setPdf)
             for file in setOfd:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
@@ -238,8 +250,8 @@ def on_start():
                     outputBox.delete("1.0", tk.END)
                     outputBox.insert(tk.END, strXbrl)
                     outputBox.config(state=tk.DISABLED)
-            setPdf = mapInputFiles["pdf"]
             for file in setPdf:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
@@ -255,7 +267,10 @@ def on_start():
                     outputBox.config(state=tk.DISABLED)
         #"从PDF中提取附件"
         case 1:
-            for file in mapInputFiles["pdf"]:
+            setPdf = mapInputFiles["pdf"]
+            progress["maximum"] = len(setPdf) 
+            for file in setPdf:
+                updateProgress()
                 path = Path(file)
                 if not strDestDir:
                     strDestDir = str(path.parent)
@@ -263,7 +278,9 @@ def on_start():
         #"从PDF中提取XML(国库集中支付电子凭证)"
         case 2:
             setPdf = mapInputFiles["pdf"]
+            progress["maximum"] = len(setPdf) 
             for file in setPdf:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".xml"))
                 if strDestDir:
@@ -279,7 +296,9 @@ def on_start():
         #"从PDF中提取XML(中央财政电子票据)"
         case 3:
             setPdf = mapInputFiles["pdf"]
+            progress["maximum"] = len(setPdf) 
             for file in setPdf:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".xml"))
                 if strDestDir:
@@ -295,7 +314,9 @@ def on_start():
         #"JSON转XBRL"
         case 4:
             setJson = mapInputFiles["json"]
+            progress["maximum"] = len(setJson) 
             for file in setJson:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
@@ -316,7 +337,9 @@ def on_start():
         #"XBRL转JSON"
         case 5:
             setXbrl = mapInputFiles["xbrl"]
+            progress["maximum"] = len(setXbrl) 
             for file in setXbrl:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".json"))
                 if strDestDir:
@@ -337,7 +360,9 @@ def on_start():
         #"XML转JSON"
         case 6:
             setXml = mapInputFiles["xml"]
+            progress["maximum"] = len(setXml) 
             for file in setXml:
+                updateProgress()
                 path = Path(file)
                 strDestFile = str(path.with_suffix(".json"))
                 if strDestDir:
@@ -354,6 +379,7 @@ def on_start():
                 with open(strDestFile, "w") as f:
                     f.write(strJson)
     btStart.config(state=tk.NORMAL)
+    rootBar.destroy()
 
 
 btStart = tk.Button(root, text="Start", width=6, height=2, fg="yellow", bg= "gray", command=on_start)
@@ -391,7 +417,9 @@ btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=0)
 
 #### Select input folder button
 def on_select_input_folder():
-    ret = select_folder(strHint="Select a folder containing input files:")
+    ret = select_folder(strTitle="Select a folder containing input files:")
+    if not ret:
+        return
     inputBox.config(state=tk.NORMAL)
     inputBox.insert(tk.END, ret+"/\n")
     inputBox.config(state=tk.DISABLED)
@@ -410,7 +438,9 @@ btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
 
 #### Select output folder button
 def on_select_output_folder():
-    ret = select_folder(strHint="Select a folder to store output files:")
+    ret = select_folder(strTitle="Select a folder to store output files:")
+    if not ret:
+        return
     outputBox.config(state=tk.NORMAL)
     outputBox.delete("1.0", tk.END)
     outputBox.insert(tk.END, ret+"/\n")
