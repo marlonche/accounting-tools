@@ -60,7 +60,10 @@ strInvoiceType = '''
 ######################################
 #import jar
 # Dynamically gathering JARs from a directory
-jars_dir = os.getcwd() + '/jars'
+baseDir = os.getcwd()
+if hasattr(sys, '_MEIPASS'):
+    baseDir = sys._MEIPASS
+jars_dir = os.path.join(baseDir, "jars")
 jar_files = [os.path.join(jars_dir, name) for name in os.listdir(jars_dir) if name.endswith(".jar")]
 CLASSPATH = os.pathsep.join(jar_files)
 
