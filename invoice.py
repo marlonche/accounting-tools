@@ -157,7 +157,10 @@ selectedOption.set(options[selectedIndex])  # Set default value
 def on_option_selected(selectedValue):
     global selectedIndex
     selectedIndex = options.index(selectedValue)
-    opDescription.config(text=descriptions[selectedIndex])
+    descriptionBox.config(state=tk.NORMAL)
+    descriptionBox.delete("1.0", tk.END)
+    descriptionBox.insert(tk.END, descriptions[selectedIndex])
+    descriptionBox.config(state=tk.DISABLED)
 
 # Create the OptionMenu
 dropdown = ttk.OptionMenu(root, selectedOption, *options, command=on_option_selected)
@@ -166,10 +169,12 @@ rowIndex += 1
 dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 
 #### Operation description:
-#opDescription = tk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, fg="#BFB5A7", bg="#2D3639")
-opDescription = ttk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, foreground="#BFB5A7", background="#2D3639")
+#opDescription = ttk.Label(root, text=descriptions[selectedIndex], wraplength=2000, justify=tk.LEFT, foreground="#BFB5A7", background="#2D3639")
+descriptionBox = tk.Text(root, width=150, height=2, borderwidth=0, highlightthickness=0, fg="#BFB5A7", bg="#2D3639")
 rowIndex += 1
-opDescription.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 20))
+descriptionBox.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 20))
+descriptionBox.insert(tk.END, descriptions[selectedIndex])
+descriptionBox.config(state=tk.DISABLED)
 
 #### Input Output description:
 rowIndex += 1
