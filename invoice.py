@@ -192,36 +192,31 @@ outputBox.grid(row=rowIndex, column=2, padx=6, pady=3)
 outputBox.insert(tk.END, strInvoiceType)
 outputBox.configure(state=tk.DISABLED)
 
-#progress bar
-rootBar = tk.CTkToplevel(root)
-rootBar.transient(root)
-rootBar.lift()
-rootBar.title("Processing...")
-width = math.floor(root.winfo_width() * 0.8)
-height = math.floor(root.winfo_height() * 0.1)
-x = (root.winfo_width() // 2) - (width // 2)
-y = (root.winfo_height() // 2) - (height // 2)
-rootBar.geometry(f'{width}x{height}+{x}+{y}')
-progress = tk.CTkProgressBar(rootBar, orientation=tk.HORIZONTAL, mode='determinate')
-rootBar.withdraw()  # Hide the progress bar initially
-
 #### Start button
 mapInputFiles = defaultdict(lambda: set())
 def on_start():
     global mapInputFiles
     btStart.configure(state=tk.DISABLED)
     #progress bar
-    rootBar.deiconify()
-    rootBar.grab_set()
-    progress.pack(fill=tk.X, expand=True)
-    progress.set(0)
+    progressWnd = tk.CTkToplevel(root)
+    progressWnd.transient(root)
+    progressWnd.grab_set()
+    progressWnd.title("Processing...")
+    width = math.floor(root.winfo_width() * 0.8)
+    height = math.floor(root.winfo_height() * 0.1)
+    x = (root.winfo_width() // 2) - (width // 2) + root.winfo_x()
+    y = (root.winfo_height() // 2) - (height // 2) + root.winfo_y()
+    progressWnd.geometry(f'{width}x{height}+{x}+{y}')
+    progressBar = tk.CTkProgressBar(progressWnd, orientation=tk.HORIZONTAL, mode='determinate')
+    progressBar.pack(fill=tk.X, expand=True)
+    progressBar.set(0)
     progressMax = 1
     progressVal = 0
     def updateProgress():
         nonlocal progressVal
         progressVal += 1
-        progress.set(progressVal / progressMax)
-        rootBar.update()
+        progressBar.set(progressVal / progressMax)
+        progressWnd.update()
 
     lines = inputBox.get("1.0", tk.END).splitlines()
     lines = [line for line in lines if line.strip()]
@@ -396,8 +391,8 @@ def on_start():
                 with open(strDestFile, "w") as f:
                     f.write(strJson)
     btStart.configure(state=tk.NORMAL)
-    rootBar.grab_release()
-    rootBar.withdraw()
+    progressWnd.grab_release()
+    progressWnd.destroy()
 
 
 btStart = tk.CTkButton(root, text="Start", width=math.floor(root.winfo_width()*0.06), command=on_start)
@@ -489,8 +484,6 @@ def on_resize():
     height = math.floor(winH * 0.1)
     x = (winW // 2) - (width // 2)
     y = (winH // 2) - (height // 2)
-    rootBar.geometry(f'{width}x{height}+{x}+{y}')
-    progress.pack(fill=tk.X, expand=True)
     btStart.configure(width=math.floor(winW*0.06))
 root.bind("<Configure>", on_configure)
 
