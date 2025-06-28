@@ -173,7 +173,7 @@ dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 #### Operation description:
 descriptionBox = tk.CTkTextbox(root, width=1200, height=50, text_color="#BFB5A7", fg_color="#2D3639")
 rowIndex += 1
-descriptionBox.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 20))
+descriptionBox.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 6))
 descriptionBox.insert(tk.END, descriptions[selectedIndex])
 descriptionBox.configure(state=tk.DISABLED)
 
