@@ -14,7 +14,7 @@ from pathlib import Path
 from collections import defaultdict
 
 ######################################
-#invoice type
+# invoice type
 mapInvoiceType = {
     "增值税电子普通发票_开具方": "inv_ord_issuer",
     "增值税电子普通发票_接收方": "inv_ord_receiver",
@@ -35,7 +35,7 @@ mapInvoiceType = {
     "国库集中支付电子凭证": "ctp",
 }
 
-strInvoiceType = '''
+strInvoiceType = """
 增值税电子普通发票_开具方
 增值税电子普通发票_接收方
 增值税电子专用发票_开具方
@@ -53,44 +53,44 @@ strInvoiceType = '''
 全面数字化的电子发票-增值税专用发票_接收方
 财政电子票据
 国库集中支付电子凭证
-'''
+"""
 
 
 ######################################
-#import jar
+# import jar
 # Dynamically gathering JARs from a directory
 baseDir = os.getcwd()
-if hasattr(sys, '_MEIPASS'):
+if hasattr(sys, "_MEIPASS"):
     baseDir = sys._MEIPASS
 jars_dir = os.path.join(baseDir, "jars")
 jar_files = [os.path.join(jars_dir, name) for name in os.listdir(jars_dir) if name.endswith(".jar")]
 CLASSPATH = os.pathsep.join(jar_files)
 
 # Start the JVM and specify the classpath to include your JAR
-jpype.startJVM(jpype.getDefaultJVMPath(), '-ea', f'-Djava.class.path={CLASSPATH}')
+jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", f"-Djava.class.path={CLASSPATH}")
 
 # Import Java classes from your JAR
 from api import *
-#java_obj = VoucherFileUtil()
 
 
 ######################################
-#Path tools
+# Path tools
 def get_files_in_dir_with_ext(directory, extension):
     base_path = Path(directory)
     return list(base_path.rglob(f'*.{extension.lstrip(".")}'))
 
+
 def get_files_in_dir(directory):
     listFiles = []
     path_obj = Path(directory)
-    for file_path in path_obj.rglob('*'):
+    for file_path in path_obj.rglob("*"):
         if file_path.is_file():
             listFiles.append(file_path)
     return listFiles
 
 
 ######################################
-#GUI
+# GUI
 def select_single_file(arrTypes):
     file_path = filedialog.askopenfilename(title="Select a File:", filetypes=arrTypes)
     return file_path
@@ -116,7 +116,7 @@ root = tk.CTk()
 # Set window properties
 root.title("Invoice Tools")
 # Set the window background color to light gray
-root.configure(fg_color='#2D3639')
+root.configure(fg_color="#2D3639")
 # Maximize the window
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
 root.geometry("%dx%d+0+0" % (w, h))
@@ -151,6 +151,7 @@ selectedIndex = 0
 selectedOption = tk.StringVar(root)
 selectedOption.set(options[selectedIndex])  # Set default value
 
+
 # Response function on option selected
 def on_option_selected(selectedValue):
     global selectedIndex
@@ -160,14 +161,15 @@ def on_option_selected(selectedValue):
     descriptionBox.insert(tk.END, descriptions[selectedIndex])
     descriptionBox.configure(state=tk.DISABLED)
 
+
 # Create the OptionMenu
 dropdown = tk.CTkOptionMenu(root, variable=selectedOption, values=options, command=on_option_selected)
-#dropdown.configure(width=35)
+# dropdown.configure(width=35)
 rowIndex += 1
 dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 
 #### Operation description:
-descriptionBox = tk.CTkTextbox(root, width=math.floor(root.winfo_width()*0.9), height=50, text_color="#BFB5A7", fg_color="#2D3639")
+descriptionBox = tk.CTkTextbox(root, width=math.floor(root.winfo_width() * 0.9), height=50, text_color="#BFB5A7", fg_color="#2D3639")
 rowIndex += 1
 descriptionBox.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 6))
 descriptionBox.insert(tk.END, descriptions[selectedIndex])
@@ -194,10 +196,12 @@ outputBox.configure(state=tk.DISABLED)
 
 #### Start button
 mapInputFiles = defaultdict(lambda: set())
+
+
 def on_start():
     global mapInputFiles
     btStart.configure(state=tk.DISABLED)
-    #progress bar
+    # progress bar
     progressWnd = tk.CTkToplevel(root)
     progressWnd.transient(root)
     progressWnd.grab_set()
@@ -206,12 +210,13 @@ def on_start():
     height = math.floor(root.winfo_height() * 0.1)
     x = (root.winfo_width() // 2) - (width // 2) + root.winfo_x()
     y = (root.winfo_height() // 2) - (height // 2) + root.winfo_y()
-    progressWnd.geometry(f'{width}x{height}+{x}+{y}')
-    progressBar = tk.CTkProgressBar(progressWnd, orientation=tk.HORIZONTAL, mode='determinate')
+    progressWnd.geometry(f"{width}x{height}+{x}+{y}")
+    progressBar = tk.CTkProgressBar(progressWnd, orientation=tk.HORIZONTAL, mode="determinate")
     progressBar.pack(fill=tk.X, expand=True)
     progressBar.set(0)
     progressMax = 1
     progressVal = 0
+
     def updateProgress():
         nonlocal progressVal
         progressVal += 1
@@ -242,7 +247,7 @@ def on_start():
         if path.exists() and path.is_dir():
             strDestDir = lines[0]
     match selectedIndex:
-        #"从OFD或PDF中提取XBRL"
+        # "从OFD或PDF中提取XBRL"
         case 0:
             setOfd = mapInputFiles["ofd"]
             setPdf = mapInputFiles["pdf"]
@@ -256,7 +261,7 @@ def on_start():
                 VoucherFileUtil.extractXBRLFromOFD(file, strDestFile)
                 if len(setOfd) == 1:
                     strXbrl = ""
-                    with open(strDestFile, 'r', encoding='utf-8') as f:
+                    with open(strDestFile, "r", encoding="utf-8") as f:
                         strXbrl = f.read()
                     outputBox.configure(state=tk.NORMAL)
                     outputBox.delete("1.0", tk.END)
@@ -271,26 +276,26 @@ def on_start():
                 VoucherFileUtil.extractXBRLFromPDF(file, strDestFile)
                 if len(setPdf) == 1:
                     strXbrl = ""
-                    with open(strDestFile, 'r', encoding='utf-8') as f:
+                    with open(strDestFile, "r", encoding="utf-8") as f:
                         strXbrl = f.read()
                     outputBox.configure(state=tk.NORMAL)
                     outputBox.delete("1.0", tk.END)
                     outputBox.insert(tk.END, strXbrl)
                     outputBox.configure(state=tk.DISABLED)
-        #"从PDF中提取附件"
+        # "从PDF中提取附件"
         case 1:
             setPdf = mapInputFiles["pdf"]
-            progressMax = len(setPdf) 
+            progressMax = len(setPdf)
             for file in setPdf:
                 updateProgress()
                 path = Path(file)
                 if not strDestDir:
                     strDestDir = str(path.parent)
-                VoucherFileUtil.extractAttachFromPDF(file, strDestDir) 
-        #"从PDF中提取XML(国库集中支付电子凭证)"
+                VoucherFileUtil.extractAttachFromPDF(file, strDestDir)
+        # "从PDF中提取XML(国库集中支付电子凭证)"
         case 2:
             setPdf = mapInputFiles["pdf"]
-            progressMax = len(setPdf) 
+            progressMax = len(setPdf)
             for file in setPdf:
                 updateProgress()
                 path = Path(file)
@@ -305,10 +310,10 @@ def on_start():
                     outputBox.configure(state=tk.DISABLED)
                 with open(strDestFile, "w") as f:
                     f.write(strXml)
-        #"从PDF中提取XML(中央财政电子票据)"
+        # "从PDF中提取XML(中央财政电子票据)"
         case 3:
             setPdf = mapInputFiles["pdf"]
-            progressMax = len(setPdf) 
+            progressMax = len(setPdf)
             for file in setPdf:
                 updateProgress()
                 path = Path(file)
@@ -323,10 +328,10 @@ def on_start():
                     outputBox.configure(state=tk.DISABLED)
                 with open(strDestFile, "w") as f:
                     f.write(strXml)
-        #"JSON转XBRL"
+        # "JSON转XBRL"
         case 4:
             setJson = mapInputFiles["json"]
-            progressMax = len(setJson) 
+            progressMax = len(setJson)
             for file in setJson:
                 updateProgress()
                 path = Path(file)
@@ -335,7 +340,7 @@ def on_start():
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
                 strJson = ""
                 configID = mapInvoiceType[path.parent.name]
-                with open(file, 'r', encoding='utf-8') as f:
+                with open(file, "r", encoding="utf-8") as f:
                     strJson = f.read()
                 strXbrl = str(VoucherFileUtil.json2Xbrl(strJson, configID))
                 if len(setJson) == 1:
@@ -345,11 +350,11 @@ def on_start():
                     outputBox.configure(state=tk.DISABLED)
                 with open(strDestFile, "w") as f:
                     f.write(strXbrl)
-            
-        #"XBRL转JSON"
+
+        # "XBRL转JSON"
         case 5:
             setXbrl = mapInputFiles["xbrl"]
-            progressMax = len(setXbrl) 
+            progressMax = len(setXbrl)
             for file in setXbrl:
                 updateProgress()
                 path = Path(file)
@@ -358,7 +363,7 @@ def on_start():
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".json"))
                 strXbrl = ""
                 configID = mapInvoiceType[path.parent.name]
-                with open(file, 'r', encoding='utf-8') as f:
+                with open(file, "r", encoding="utf-8") as f:
                     strXbrl = f.read()
                 strJson = str(VoucherFileUtil.xbrl2Json(strXbrl, configID).toJSONString())
                 if len(setXbrl) == 1:
@@ -368,11 +373,11 @@ def on_start():
                     outputBox.configure(state=tk.DISABLED)
                 with open(strDestFile, "w") as f:
                     f.write(strJson)
-         
-        #"XML转JSON"
+
+        # "XML转JSON"
         case 6:
             setXml = mapInputFiles["xml"]
-            progressMax = len(setXml) 
+            progressMax = len(setXml)
             for file in setXml:
                 updateProgress()
                 path = Path(file)
@@ -380,7 +385,7 @@ def on_start():
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".json"))
                 strXml = ""
-                with open(file, 'r', encoding='utf-8') as f:
+                with open(file, "r", encoding="utf-8") as f:
                     strXml = f.read()
                 strJson = str(VoucherFileUtil.xml2Json(strXml).toJSONString())
                 if len(setXml) == 1:
@@ -395,8 +400,9 @@ def on_start():
     progressWnd.destroy()
 
 
-btStart = tk.CTkButton(root, text="Start", width=math.floor(root.winfo_width()*0.06), command=on_start)
+btStart = tk.CTkButton(root, text="Start", width=math.floor(root.winfo_width() * 0.06), command=on_start)
 btStart.grid(row=rowIndex, column=1, padx=0)
+
 
 #### Select files button
 def on_select_files():
@@ -415,12 +421,14 @@ def on_select_files():
     files = select_multiple_files(arrTypes)
     inputBox.configure(state=tk.NORMAL)
     for file in files:
-        inputBox.insert(tk.END, file+"\n")
+        inputBox.insert(tk.END, file + "\n")
     inputBox.configure(state=tk.DISABLED)
+
 
 btSelectFile = tk.CTkButton(root, text="Select Files...", command=on_select_files)
 rowIndex += 1
 btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=0)
+
 
 #### Select input folder button
 def on_select_input_folder():
@@ -428,11 +436,13 @@ def on_select_input_folder():
     if not ret:
         return
     inputBox.configure(state=tk.NORMAL)
-    inputBox.insert(tk.END, ret+"/\n")
+    inputBox.insert(tk.END, ret + "/\n")
     inputBox.configure(state=tk.DISABLED)
+
 
 btSelectInputFolder = tk.CTkButton(root, text="Select Folder...", command=on_select_input_folder)
 btSelectInputFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
+
 
 #### Clear text box button
 def on_clear_text():
@@ -440,8 +450,10 @@ def on_clear_text():
     inputBox.delete("1.0", tk.END)
     inputBox.configure(state=tk.DISABLED)
 
+
 btClearText = tk.CTkButton(root, text="Clear", command=on_clear_text)
 btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
+
 
 #### Select output folder button
 def on_select_output_folder():
@@ -450,8 +462,9 @@ def on_select_output_folder():
         return
     outputBox.configure(state=tk.NORMAL)
     outputBox.delete("1.0", tk.END)
-    outputBox.insert(tk.END, ret+"/\n")
+    outputBox.insert(tk.END, ret + "/\n")
     outputBox.configure(state=tk.DISABLED)
+
 
 btSelectOutputFolder = tk.CTkButton(root, text="Select Folder...", command=on_select_output_folder)
 btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pady=0)
@@ -460,6 +473,8 @@ btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pad
 winW = root.winfo_width()
 winH = root.winfo_height()
 resizeJob = None
+
+
 def on_configure(event):
     global winW, winH, resizeJob
     if event.widget.winfo_toplevel() != event.widget:
@@ -474,17 +489,20 @@ def on_configure(event):
         root.after_cancel(resizeJob)
     resizeJob = root.after(100, on_resize)
 
+
 def on_resize():
     inputBoxWidth = math.floor(winW * 0.46)
     inputBoxHeight = math.floor(winH * 0.7)
     inputBox.configure(width=inputBoxWidth, height=inputBoxHeight)
     outputBox.configure(width=inputBoxWidth, height=inputBoxHeight)
-    descriptionBox.configure(width=math.floor(winW*0.9))
+    descriptionBox.configure(width=math.floor(winW * 0.9))
     width = math.floor(winW * 0.8)
     height = math.floor(winH * 0.1)
     x = (winW // 2) - (width // 2)
     y = (winH // 2) - (height // 2)
-    btStart.configure(width=math.floor(winW*0.06))
+    btStart.configure(width=math.floor(winW * 0.06))
+
+
 root.bind("<Configure>", on_configure)
 
 # Start the main event loop
