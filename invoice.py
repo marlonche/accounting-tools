@@ -111,10 +111,6 @@ def select_folder(strTitle):
     return file_path
 
 
-#ret = select_folder(strTitle="Select a Folder to Save Output Files:")
-#ret = save_as(arrTypes=[("jar", "*.jar"), ("zip", "*.zip")], strDefaultExt=".pdf", strInitName="aaa.txt") 
-#print(ret)
-
 # Create the main window
 root = tk.CTk()
 # Set window properties
@@ -171,7 +167,7 @@ rowIndex += 1
 dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=(6, 6))
 
 #### Operation description:
-descriptionBox = tk.CTkTextbox(root, width=1200, height=50, text_color="#BFB5A7", fg_color="#2D3639")
+descriptionBox = tk.CTkTextbox(root, width=math.floor(root.winfo_width()*0.9), height=50, text_color="#BFB5A7", fg_color="#2D3639")
 rowIndex += 1
 descriptionBox.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(0, 6))
 descriptionBox.insert(tk.END, descriptions[selectedIndex])
@@ -182,35 +178,35 @@ rowIndex += 1
 tk.CTkLabel(root, text="Input", text_color="#BFB5A7", fg_color="#2D3639").grid(row=rowIndex, column=0)
 tk.CTkLabel(root, text="Output", text_color="#BFB5A7", fg_color="#2D3639").grid(row=rowIndex, column=2)
 
+inputBoxWidth = math.floor(root.winfo_width() * 0.46)
+inputBoxHeight = math.floor(root.winfo_height() * 0.7)
 #### Input box
-inputBox = tk.CTkTextbox(root, width=600, height=400, text_color="black", font=tk.CTkFont(family="IBM Plex Mono", size=14, weight="bold"))
+inputBox = tk.CTkTextbox(root, width=inputBoxWidth, height=inputBoxHeight, text_color="black", fg_color="white", font=tk.CTkFont(family="IBM Plex Mono", size=14, weight="bold"))
 rowIndex += 1
-inputBox.grid(row=rowIndex, column=0, padx=3, pady=3)
+inputBox.grid(row=rowIndex, column=0, padx=6, pady=3)
 inputBox.configure(state=tk.DISABLED)
 
 #### Output box
-outputBox = tk.CTkTextbox(root, width=600, height=400, text_color="black", font=tk.CTkFont(family="IBM Plex Mono", size=14, weight="bold"))
-outputBox.grid(row=rowIndex, column=2, padx=3, pady=3)
+outputBox = tk.CTkTextbox(root, width=inputBoxWidth, height=inputBoxHeight, text_color="black", fg_color="white", font=tk.CTkFont(family="IBM Plex Mono", size=14, weight="bold"))
+outputBox.grid(row=rowIndex, column=2, padx=6, pady=3)
 outputBox.insert(tk.END, strInvoiceType)
 outputBox.configure(state=tk.DISABLED)
-
-#### Start button
-mapInputFiles = defaultdict(lambda: set())
 
 #progress bar
 rootBar = tk.CTkToplevel(root)
 rootBar.transient(root)
 rootBar.lift()
 rootBar.title("Processing...")
-width = math.floor(rootBar.winfo_screenwidth() * 0.8)
-height = math.floor(rootBar.winfo_screenheight() * 0.1)
-x = (rootBar.winfo_screenwidth() // 2) - (width // 2)
-y = (rootBar.winfo_screenheight() // 2) - (height // 2)
+width = math.floor(root.winfo_width() * 0.8)
+height = math.floor(root.winfo_height() * 0.1)
+x = (root.winfo_width() // 2) - (width // 2)
+y = (root.winfo_height() // 2) - (height // 2)
 rootBar.geometry(f'{width}x{height}+{x}+{y}')
 progress = tk.CTkProgressBar(rootBar, orientation=tk.HORIZONTAL, mode='determinate')
-progress.pack(fill=tk.X, expand=True)
 rootBar.withdraw()  # Hide the progress bar initially
 
+#### Start button
+mapInputFiles = defaultdict(lambda: set())
 def on_start():
     global mapInputFiles
     btStart.configure(state=tk.DISABLED)
@@ -225,7 +221,7 @@ def on_start():
         nonlocal progressVal
         progressVal += 1
         progress.set(progressVal / progressMax)
-        rootBar.update_idletasks()
+        rootBar.update()
 
     lines = inputBox.get("1.0", tk.END).splitlines()
     lines = [line for line in lines if line.strip()]
@@ -404,7 +400,7 @@ def on_start():
     rootBar.withdraw()
 
 
-btStart = tk.CTkButton(root, text="Start", width=50, command=on_start)
+btStart = tk.CTkButton(root, text="Start", width=math.floor(root.winfo_width()*0.06), command=on_start)
 btStart.grid(row=rowIndex, column=1, padx=0)
 
 #### Select files button
@@ -427,7 +423,6 @@ def on_select_files():
         inputBox.insert(tk.END, file+"\n")
     inputBox.configure(state=tk.DISABLED)
 
-#btSelectFile = tk.Button(root, text="Select Files...", width=12, height=2, fg="yellow", bg= "#535151", command=on_select_files)
 btSelectFile = tk.CTkButton(root, text="Select Files...", command=on_select_files)
 rowIndex += 1
 btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=0)
@@ -441,7 +436,6 @@ def on_select_input_folder():
     inputBox.insert(tk.END, ret+"/\n")
     inputBox.configure(state=tk.DISABLED)
 
-#btSelectInputFolder = tk.Button(root, text="Select Folder...", width=12, height=2, fg="yellow", bg= "#535151", command=on_select_input_folder)
 btSelectInputFolder = tk.CTkButton(root, text="Select Folder...", command=on_select_input_folder)
 btSelectInputFolder.grid(row=rowIndex, column=0, padx=(10), pady=0)
 
@@ -451,7 +445,6 @@ def on_clear_text():
     inputBox.delete("1.0", tk.END)
     inputBox.configure(state=tk.DISABLED)
 
-#btClearText = tk.Button(root, text="Clear", width=12, height=2, fg="yellow", bg= "#535151", command=on_clear_text)
 btClearText = tk.CTkButton(root, text="Clear", command=on_clear_text)
 btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=0)
 
@@ -465,10 +458,41 @@ def on_select_output_folder():
     outputBox.insert(tk.END, ret+"/\n")
     outputBox.configure(state=tk.DISABLED)
 
-#btSelectOutputFolder = ttk.Button(root, text="Select Folder...", width=12, height=2, fg="#613302", bg="#535151", activebackground="#050505", command=on_select_output_folder)
 btSelectOutputFolder = tk.CTkButton(root, text="Select Folder...", command=on_select_output_folder)
 btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pady=0)
 
+#### Resize handling
+winW = root.winfo_width()
+winH = root.winfo_height()
+resizeJob = None
+def on_configure(event):
+    global winW, winH, resizeJob
+    if event.widget.winfo_toplevel() != event.widget:
+        return
+    if event.width == winW and event.height == winH:
+        return
+    if event.width < 200 or event.height < 200:
+        return
+    winW = event.width
+    winH = event.height
+    if resizeJob:
+        root.after_cancel(resizeJob)
+    resizeJob = root.after(100, on_resize)
+
+def on_resize():
+    inputBoxWidth = math.floor(winW * 0.46)
+    inputBoxHeight = math.floor(winH * 0.7)
+    inputBox.configure(width=inputBoxWidth, height=inputBoxHeight)
+    outputBox.configure(width=inputBoxWidth, height=inputBoxHeight)
+    descriptionBox.configure(width=math.floor(winW*0.9))
+    width = math.floor(winW * 0.8)
+    height = math.floor(winH * 0.1)
+    x = (winW // 2) - (width // 2)
+    y = (winH // 2) - (height // 2)
+    rootBar.geometry(f'{width}x{height}+{x}+{y}')
+    progress.pack(fill=tk.X, expand=True)
+    btStart.configure(width=math.floor(winW*0.06))
+root.bind("<Configure>", on_configure)
 
 # Start the main event loop
 root.mainloop()
