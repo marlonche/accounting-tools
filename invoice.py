@@ -119,8 +119,10 @@ root.title("Invoice Tools")
 # Set the window background color to light gray
 root.configure(fg_color="#2D3639")
 # Maximize the window
-w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-root.geometry("%dx%d+0+0" % (w, h))
+w, h = 1100, 800
+x = (root.winfo_screenwidth() // 2) - (w // 2)
+y = (root.winfo_screenheight() // 2) - (h // 2)
+root.geometry(f"{w}x{h}+{x}+{y}")
 
 #### Operations dropdown
 options = [
@@ -154,6 +156,7 @@ selectedIndex = 0
 selectedOption = tk.StringVar(root)
 selectedOption.set(options[selectedIndex])  # Set default value
 
+
 # Response function on option selected
 def on_option_selected(selectedValue):
     global selectedIndex
@@ -162,6 +165,7 @@ def on_option_selected(selectedValue):
     descriptionBox.delete("1.0", tk.END)
     descriptionBox.insert(tk.END, descriptions[selectedIndex])
     descriptionBox.configure(state=tk.DISABLED)
+
 
 # Create the OptionMenu
 dropdown = tk.CTkOptionMenu(root, variable=selectedOption, values=options, command=on_option_selected)
@@ -197,13 +201,13 @@ outputBox.configure(state=tk.DISABLED)
 #### Start button
 mapInputFiles = defaultdict(lambda: set())
 
+
 def on_start():
     global mapInputFiles
     btStart.configure(state=tk.DISABLED)
     # progress bar
     progressWnd = tk.CTkToplevel(root)
     progressWnd.transient(root)
-    progressWnd.grab_set()
     progressWnd.title("Processing...")
     width = math.floor(root.winfo_width() * 0.8)
     height = math.floor(root.winfo_height() * 0.1)
@@ -215,6 +219,8 @@ def on_start():
     progressBar.set(0)
     progressMax = 1
     progressVal = 0
+    progressWnd.update()
+    progressWnd.grab_set()
 
     def updateProgress():
         nonlocal progressVal
@@ -398,8 +404,10 @@ def on_start():
     progressWnd.grab_release()
     progressWnd.destroy()
 
+
 btStart = tk.CTkButton(root, text="Start", width=math.floor(root.winfo_width() * 0.06), command=on_start)
 btStart.grid(row=rowIndex, column=1, padx=2)
+
 
 #### Select files button
 def on_select_files():
@@ -421,9 +429,11 @@ def on_select_files():
         inputBox.insert(tk.END, file + "\n")
     inputBox.configure(state=tk.DISABLED)
 
+
 btSelectFile = tk.CTkButton(root, text="Select Files...", command=on_select_files)
 rowIndex += 1
 btSelectFile.grid(row=rowIndex, column=0, sticky="W", padx=(20, 10), pady=5)
+
 
 #### Select input folder button
 def on_select_input_folder():
@@ -434,8 +444,10 @@ def on_select_input_folder():
     inputBox.insert(tk.END, ret + "/\n")
     inputBox.configure(state=tk.DISABLED)
 
+
 btSelectInputFolder = tk.CTkButton(root, text="Select Folder...", command=on_select_input_folder)
 btSelectInputFolder.grid(row=rowIndex, column=0, padx=(10), pady=5)
+
 
 #### Clear text box button
 def on_clear_text():
@@ -443,8 +455,10 @@ def on_clear_text():
     inputBox.delete("1.0", tk.END)
     inputBox.configure(state=tk.DISABLED)
 
+
 btClearText = tk.CTkButton(root, text="Clear", command=on_clear_text)
 btClearText.grid(row=rowIndex, column=0, sticky="E", padx=(10, 20), pady=5)
+
 
 #### Select output folder button
 def on_select_output_folder():
@@ -456,6 +470,7 @@ def on_select_output_folder():
     outputBox.insert(tk.END, ret + "/\n")
     outputBox.configure(state=tk.DISABLED)
 
+
 btSelectOutputFolder = tk.CTkButton(root, text="Select Folder...", command=on_select_output_folder)
 btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pady=5)
 
@@ -463,6 +478,7 @@ btSelectOutputFolder.grid(row=rowIndex, column=2, sticky="W", padx=(20, 10), pad
 winW = root.winfo_width()
 winH = root.winfo_height()
 resizeJob = None
+
 
 def on_configure(event):
     global winW, winH, resizeJob
@@ -483,23 +499,26 @@ def getPadX(widget):
     ret = widget.grid_info().get("padx")
     if isinstance(ret, tuple):
         return ret[0] + ret[1]
-    return ret*2 if ret is not None else 0
+    return ret * 2 if ret is not None else 0
+
 
 def getPadY(widget):
     ret = widget.grid_info().get("pady")
     if isinstance(ret, tuple):
         return ret[0] + ret[1]
-    return ret*2 if ret is not None else 0
+    return ret * 2 if ret is not None else 0
+
 
 def getHeightWithPad(widget):
     h = widget.winfo_height()
     ret = widget.grid_info().get("pady")
     if isinstance(ret, tuple):
         return h + ret[0] + ret[1]
-    return h + ret*2 if ret is not None else 0
+    return h + ret * 2 if ret is not None else 0
+
 
 def on_resize():
-    winWFixed = getPadX(inputBox)*2 + getPadX(btStart)
+    winWFixed = getPadX(inputBox) * 2 + getPadX(btStart)
     winHFixed = getHeightWithPad(labelOption) + getHeightWithPad(dropdown) + getHeightWithPad(descriptionBox) + getHeightWithPad(labelInput) + getPadY(inputBox) + getHeightWithPad(btSelectFile)
     inputBoxWidth = math.floor((winW - winWFixed) * 0.46)
     inputBoxHeight = winH - winHFixed
@@ -507,6 +526,7 @@ def on_resize():
     outputBox.configure(width=inputBoxWidth, height=inputBoxHeight)
     descriptionBox.configure(width=math.floor(winW * 0.9))
     btStart.configure(width=math.floor((winW - winWFixed) * 0.08))
+
 
 root.update()
 on_resize()
