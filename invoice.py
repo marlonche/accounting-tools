@@ -4,14 +4,15 @@ import inspect
 import sys
 import time
 import math
+from pathlib import Path
+from collections import defaultdict
+import PyPDF2
+import json
 import jpype
 import jpype.imports
 from jpype.types import *
-
 import customtkinter as tk
 from customtkinter import filedialog
-from pathlib import Path
-from collections import defaultdict
 
 
 ######################################
@@ -126,7 +127,7 @@ root.geometry(f"{w}x{h}+{x}+{y}")
 
 #### Operations dropdown
 options = [
-    "从OFD或PDF中提取XBRL",
+    "从PDF中提取发票信息到excel",
     "从PDF中提取附件",
     "从PDF中提取XML(国库集中支付电子凭证)",
     "从PDF中提取XML(中央财政电子票据)",
@@ -136,7 +137,7 @@ options = [
 ]
 
 descriptions = [
-    "Input包含多个PDF或OFD文件,或目录(目录包括子目录里面的所有PDF或OFD都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录); Input仅包含一个文件名时, Output输出XBRL文本",
+    "Input可指定多个PDF文件,或目录(目录包括子目录里面的所有PDF都将被处理), 点Start指定输出excel文件后, 所有发票信息都汇总到指定excel文件",
     "Input可包含多个PDF文件,或目录(目录包括子目录里面的所有PDF都将被处理); Output可指定输出目录(如不指定则输出到源文件所在目录)",
     "适用于国库集中支付电子凭证; Input仅包含一个PDF文件名时, Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
     "仅适用于中央财政电子票据; Input仅包含一个PDF文件名时,Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
@@ -252,41 +253,24 @@ def on_start():
         if path.exists() and path.is_dir():
             strDestDir = lines[0]
     match selectedIndex:
-        # "从OFD或PDF中提取XBRL"
+        # "从PDF中提取发票信息到excel"
         case 0:
-            setOfd = mapInputFiles["ofd"]
             setPdf = mapInputFiles["pdf"]
-            progressMax = len(setOfd) + len(setPdf)
-            for file in setOfd:
-                updateProgress()
-                path = Path(file)
-                strDestFile = str(path.with_suffix(".xbrl"))
-                if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
-                VoucherFileUtil.extractXBRLFromOFD(file, strDestFile)
-                if len(setOfd) == 1:
-                    strXbrl = ""
-                    with open(strDestFile, "r", encoding="utf-8") as f:
-                        strXbrl = f.read()
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strXbrl)
-                    outputBox.configure(state=tk.DISABLED)
+            progressMax = len(setPdf)
             for file in setPdf:
                 updateProgress()
                 path = Path(file)
-                strDestFile = str(path.with_suffix(".xbrl"))
+                strDestFile = str(path.with_suffix(".json"))
                 if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
-                VoucherFileUtil.extractXBRLFromPDF(file, strDestFile)
-                if len(setPdf) == 1:
-                    strXbrl = ""
-                    with open(strDestFile, "r", encoding="utf-8") as f:
-                        strXbrl = f.read()
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strXbrl)
-                    outputBox.configure(state=tk.DISABLED)
+                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".json"))
+                textRaw = ""
+                with open(file, 'rb') as f:
+                    reader = PyPDF2.PdfReader(f)
+                    for nPage in range(len(reader.pages)):
+                        textRaw += reader.pages[nPage].extract_text()
+                strJson = json.dumps({"pdf_content": textRaw}, indent=4, ensure_ascii=False).encode("utf-8")
+                with open(strDestFile, "w") as f:
+                    f.write(strJson.decode("utf-8"))
         # "从PDF中提取附件"
         case 1:
             setPdf = mapInputFiles["pdf"]
