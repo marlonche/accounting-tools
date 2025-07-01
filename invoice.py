@@ -14,6 +14,9 @@ from jpype.types import *
 import customtkinter as tk
 from customtkinter import filedialog
 
+from pdfminer.high_level import extract_pages
+from pdfminer.layout import LTTextContainer, LTChar
+
 
 ######################################
 # invoice type
@@ -113,6 +116,34 @@ def select_folder(strTitle):
     return file_path
 
 
+#####################################
+# PDF tools
+def extract_text_with_positions(pdf_path):
+    for page_layout in extract_pages(pdf_path):
+        for element in page_layout:
+            if isinstance(element, LTTextContainer):
+                print(f"==============a LTTextContainer")
+                for text_line in element:
+                    print(f"===text_line type: {type(text_line)}")
+                    print(f"===Text line: {text_line.get_text()}")
+                    if hasattr(text_line, "bbox"):
+                        print(f"===text_line bbox: {text_line.bbox}")
+
+def extractText(pdfPath, destPath):
+    textRaw = ""
+    with open(pdfPath, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        for nPage in range(len(reader.pages)):
+            textRaw += reader.pages[nPage].extract_text()
+    strJson = json.dumps({"pdf_content": textRaw}, indent=4, ensure_ascii=False).encode("utf-8")
+    with open(destPath, "w") as f:
+        f.write(strJson.decode("utf-8"))
+
+
+def parsePdf(pdfPath, destPath):
+    extract_text_with_positions(pdfPath)
+
+
 # Create the main window
 root = tk.CTk()
 # Set window properties
@@ -120,7 +151,7 @@ root.title("Invoice Tools")
 # Set the window background color to light gray
 root.configure(fg_color="#2D3639")
 # Maximize the window
-w, h = 1100, 800
+w, h = math.floor(root.winfo_screenwidth()*0.8), math.floor(root.winfo_screenheight()*0.8)
 x = (root.winfo_screenwidth() // 2) - (w // 2)
 y = (root.winfo_screenheight() // 2) - (h // 2)
 root.geometry(f"{w}x{h}+{x}+{y}")
@@ -263,14 +294,7 @@ def on_start():
                 strDestFile = str(path.with_suffix(".json"))
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".json"))
-                textRaw = ""
-                with open(file, 'rb') as f:
-                    reader = PyPDF2.PdfReader(f)
-                    for nPage in range(len(reader.pages)):
-                        textRaw += reader.pages[nPage].extract_text()
-                strJson = json.dumps({"pdf_content": textRaw}, indent=4, ensure_ascii=False).encode("utf-8")
-                with open(strDestFile, "w") as f:
-                    f.write(strJson.decode("utf-8"))
+                parsePdf(file, strDestFile)
         # "从PDF中提取附件"
         case 1:
             setPdf = mapInputFiles["pdf"]

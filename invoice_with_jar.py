@@ -71,7 +71,9 @@ CLASSPATH = os.pathsep.join(jar_files)
 jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", f"-Djava.class.path={CLASSPATH}")
 
 # Import Java classes from your JAR
-from api import *
+# from api import *
+import java
+from com.bosssoft.tool import BossVoucherFileUtil
 
 
 ######################################
@@ -119,7 +121,7 @@ root.title("Invoice Tools")
 # Set the window background color to light gray
 root.configure(fg_color="#2D3639")
 # Maximize the window
-w, h = 1100, 800
+w, h = math.floor(root.winfo_screenwidth() * 0.8), math.floor(root.winfo_screenheight() * 0.8)
 x = (root.winfo_screenwidth() // 2) - (w // 2)
 y = (root.winfo_screenheight() // 2) - (h // 2)
 root.geometry(f"{w}x{h}+{x}+{y}")
@@ -127,9 +129,7 @@ root.geometry(f"{w}x{h}+{x}+{y}")
 #### Operations dropdown
 options = [
     "从OFD或PDF中提取XBRL",
-    "从PDF中提取附件",
-    "从PDF中提取XML(国库集中支付电子凭证)",
-    "从PDF中提取XML(中央财政电子票据)",
+    "从PDF中提取XML(财政电子票据(不含电子非税收入一般缴款书))",
     "JSON转XBRL",
     "XBRL转JSON",
     "XML转JSON",
@@ -137,9 +137,7 @@ options = [
 
 descriptions = [
     "Input包含多个PDF或OFD文件,或目录(目录包括子目录里面的所有PDF或OFD都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录); Input仅包含一个文件名时, Output输出XBRL文本",
-    "Input可包含多个PDF文件,或目录(目录包括子目录里面的所有PDF都将被处理); Output可指定输出目录(如不指定则输出到源文件所在目录)",
-    "适用于国库集中支付电子凭证; Input仅包含一个PDF文件名时, Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
-    "仅适用于中央财政电子票据; Input仅包含一个PDF文件名时,Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
+    "仅适用于财政电子票据(不含电子非税收入一般缴款书); Input仅包含一个PDF文件名时,Output输出XML文本; Input包含多个PDF文件或目录(目录包括子目录里面的所有PDF都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
     "Input仅包含一个JSON文件名时,Output输出XBRL文本; Input包含多个JSON文件或目录(目录包括子目录里面的所有JSON文件都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录). JSON文件所在文件夹要用所属票据类型名称命名(程序启动时Output文本框列出了所有票据类型名称)",
     "Input仅包含一个XBRL文件名时,Output输出JSON文本; Input包含多个XBRL文件或目录(目录包括子目录里面的所有XBRL文件都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录). XBRL文件所在文件夹要用所属票据类型名称命名(程序启动时Output文本框列出了所有票据类型名称)",
     "Input包含XML文本或一个XML文件名时, Output输出JSON文本; Input包含多个XML文件或目录(目录包括子目录里面的所有XML文件都将被处理)时, Output可指定输出目录(如不指定则输出到源文件所在目录)",
@@ -174,7 +172,7 @@ rowIndex += 1
 dropdown.grid(row=rowIndex, column=0, columnspan=3, pady=0)
 
 #### Operation description:
-descriptionBox = tk.CTkTextbox(root, width=math.floor(root.winfo_width() * 0.9), height=50, text_color="#BFB5A7", fg_color="#2D3639")
+descriptionBox = tk.CTkTextbox(root, width=math.floor(root.winfo_width() * 0.9), height=80, text_color="#BFB5A7", fg_color="#2D3639")
 rowIndex += 1
 descriptionBox.grid(row=rowIndex, column=0, columnspan=3, padx=5, pady=(4, 6))
 descriptionBox.insert(tk.END, descriptions[selectedIndex])
@@ -263,8 +261,8 @@ def on_start():
                 strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
-                VoucherFileUtil.extractXBRLFromOFD(file, strDestFile)
-                if len(setOfd) == 1:
+                BossVoucherFileUtil.extractXBRLFromOFD(file, strDestFile)
+                if 1 == progressMax and Path(strDestFile).exists():
                     strXbrl = ""
                     with open(strDestFile, "r", encoding="utf-8") as f:
                         strXbrl = f.read()
@@ -278,8 +276,8 @@ def on_start():
                 strDestFile = str(path.with_suffix(".xbrl"))
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xbrl"))
-                VoucherFileUtil.extractXBRLFromPDF(file, strDestFile)
-                if len(setPdf) == 1:
+                BossVoucherFileUtil.extractXBRLFromPDF(file, strDestFile)
+                if 1 == progressMax and Path(strDestFile).exists():
                     strXbrl = ""
                     with open(strDestFile, "r", encoding="utf-8") as f:
                         strXbrl = f.read()
@@ -287,54 +285,31 @@ def on_start():
                     outputBox.delete("1.0", tk.END)
                     outputBox.insert(tk.END, strXbrl)
                     outputBox.configure(state=tk.DISABLED)
-        # "从PDF中提取附件"
+        # "从PDF中提取XML, 仅用于提取财政电子票据(不含电子非税收入一般缴款书)"
         case 1:
             setPdf = mapInputFiles["pdf"]
             progressMax = len(setPdf)
             for file in setPdf:
                 updateProgress()
                 path = Path(file)
-                if not strDestDir:
-                    strDestDir = str(path.parent)
-                VoucherFileUtil.extractAttachFromPDF(file, strDestDir)
-        # "从PDF中提取XML(国库集中支付电子凭证)"
-        case 2:
-            setPdf = mapInputFiles["pdf"]
-            progressMax = len(setPdf)
-            for file in setPdf:
-                updateProgress()
-                path = Path(file)
                 strDestFile = str(path.with_suffix(".xml"))
                 if strDestDir:
                     strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xml"))
-                strXml = str(VoucherFileUtil.extractXMLFromPDF(file))
-                if len(setPdf) == 1:
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strXml)
-                    outputBox.configure(state=tk.DISABLED)
-                with open(strDestFile, "w") as f:
-                    f.write(strXml)
-        # "从PDF中提取XML(中央财政电子票据)"
-        case 3:
-            setPdf = mapInputFiles["pdf"]
-            progressMax = len(setPdf)
-            for file in setPdf:
-                updateProgress()
-                path = Path(file)
-                strDestFile = str(path.with_suffix(".xml"))
-                if strDestDir:
-                    strDestFile = str((Path(strDestDir) / path.name).with_suffix(".xml"))
-                strXml = str(VoucherFileUtil.extractXMLFromCEBPDF(file))
-                if len(setPdf) == 1:
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strXml)
-                    outputBox.configure(state=tk.DISABLED)
-                with open(strDestFile, "w") as f:
-                    f.write(strXml)
+                try:
+                    BossVoucherFileUtil.extractXMLAttachFromPDF(file, strDestFile)
+                except java.lang.Exception as e:
+                    print(f"Error extracting XML from {file}: {e}")
+                strXml = ""
+                if Path(strDestFile).exists():
+                    with open(strDestFile, "r", encoding="utf-8") as f:
+                        strXml = f.read()
+                    if len(setPdf) == 1:
+                        outputBox.configure(state=tk.NORMAL)
+                        outputBox.delete("1.0", tk.END)
+                        outputBox.insert(tk.END, strXml)
+                        outputBox.configure(state=tk.DISABLED)
         # "JSON转XBRL"
-        case 4:
+        case 2:
             setJson = mapInputFiles["json"]
             progressMax = len(setJson)
             for file in setJson:
@@ -347,17 +322,18 @@ def on_start():
                 configID = mapInvoiceType[path.parent.name]
                 with open(file, "r", encoding="utf-8") as f:
                     strJson = f.read()
-                strXbrl = str(VoucherFileUtil.json2Xbrl(strJson, configID))
-                if len(setJson) == 1:
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strXbrl)
-                    outputBox.configure(state=tk.DISABLED)
-                with open(strDestFile, "w") as f:
-                    f.write(strXbrl)
+                strXbrl = str(BossVoucherFileUtil.json2Xbrl(strJson, configID))
+                if strXbrl:
+                    if len(setJson) == 1:
+                        outputBox.configure(state=tk.NORMAL)
+                        outputBox.delete("1.0", tk.END)
+                        outputBox.insert(tk.END, strXbrl)
+                        outputBox.configure(state=tk.DISABLED)
+                    with open(strDestFile, "w") as f:
+                        f.write(strXbrl)
 
         # "XBRL转JSON"
-        case 5:
+        case 3:
             setXbrl = mapInputFiles["xbrl"]
             progressMax = len(setXbrl)
             for file in setXbrl:
@@ -370,17 +346,18 @@ def on_start():
                 configID = mapInvoiceType[path.parent.name]
                 with open(file, "r", encoding="utf-8") as f:
                     strXbrl = f.read()
-                strJson = str(VoucherFileUtil.xbrl2Json(strXbrl, configID).toJSONString())
-                if len(setXbrl) == 1:
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strJson)
-                    outputBox.configure(state=tk.DISABLED)
-                with open(strDestFile, "w") as f:
-                    f.write(strJson)
+                strJson = str(BossVoucherFileUtil.xbrl2Json(strXbrl, configID).toJSONString())
+                if strJson:
+                    if len(setXbrl) == 1:
+                        outputBox.configure(state=tk.NORMAL)
+                        outputBox.delete("1.0", tk.END)
+                        outputBox.insert(tk.END, strJson)
+                        outputBox.configure(state=tk.DISABLED)
+                    with open(strDestFile, "w") as f:
+                        f.write(strJson)
 
         # "XML转JSON"
-        case 6:
+        case 4:
             setXml = mapInputFiles["xml"]
             progressMax = len(setXml)
             for file in setXml:
@@ -392,14 +369,15 @@ def on_start():
                 strXml = ""
                 with open(file, "r", encoding="utf-8") as f:
                     strXml = f.read()
-                strJson = str(VoucherFileUtil.xml2Json(strXml).toJSONString())
-                if len(setXml) == 1:
-                    outputBox.configure(state=tk.NORMAL)
-                    outputBox.delete("1.0", tk.END)
-                    outputBox.insert(tk.END, strJson)
-                    outputBox.configure(state=tk.DISABLED)
-                with open(strDestFile, "w") as f:
-                    f.write(strJson)
+                strJson = str(BossVoucherFileUtil.xml2Json(strXml).toJSONString())
+                if strJson:
+                    if len(setXml) == 1:
+                        outputBox.configure(state=tk.NORMAL)
+                        outputBox.delete("1.0", tk.END)
+                        outputBox.insert(tk.END, strJson)
+                        outputBox.configure(state=tk.DISABLED)
+                    with open(strDestFile, "w") as f:
+                        f.write(strJson)
     btStart.configure(state=tk.NORMAL)
     progressWnd.grab_release()
     progressWnd.destroy()
