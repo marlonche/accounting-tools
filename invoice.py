@@ -9,13 +9,14 @@ from collections import defaultdict
 import PyPDF2
 import json
 import jpype
+import pdfplumber
 import jpype.imports
 from jpype.types import *
 import customtkinter as tk
 from customtkinter import filedialog
-
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer, LTChar
+import camelot
 
 
 ######################################
@@ -139,9 +140,31 @@ def extractText(pdfPath, destPath):
     with open(destPath, "w") as f:
         f.write(strJson.decode("utf-8"))
 
+def extract_text_and_coords_with_pdfplumber(pdf_path, destPath):
+    #with pdfplumber.open(pdf_path) as pdf:
+    #    for page in pdf.pages:
+            # Extract characters with their bounding boxes
+            #for char in page.chars:
+            #    print(f"Character: '{char['text']}', Bbox: {char['x0']}, {char['y0']}, {char['x1']}, {char['y1']}")
+
+            # You can also extract words or lines and access their bounding boxes
+            #for word in page.extract_words():
+            #    print(f"Word: {str(word)}")
+            
+            #table in invoice
+            #tables = page.extract_tables()
+            #for table in tables:
+            #    for row in table:
+            #        print(row)
+
+    tables = camelot.read_pdf(pdf_path, pages='all') # Extract tables from all pages
+    # Access the first extracted table as a Pandas DataFrame
+    df = tables[0].df
+    df.to_csv(destPath, index=False)
 
 def parsePdf(pdfPath, destPath):
-    extract_text_with_positions(pdfPath)
+    #extract_text_with_positions(pdfPath)
+    extract_text_and_coords_with_pdfplumber(pdfPath, destPath)
 
 
 # Create the main window
